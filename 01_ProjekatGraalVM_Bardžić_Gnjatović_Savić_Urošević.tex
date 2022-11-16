@@ -200,6 +200,41 @@ except ValueError:
 \end{lstlisting}
 
 
+\section{Uvod}
+\label{sec:uvod}
+GraalVM je alat koji omogućava pisanje i izvršavanje java koda. Pored jave GraalVM podržava i druge jezike: 
+\begin{itemize}
+	\item JavaScript i Node.js
+	\item Python
+	\item Ruby
+	\item R
+	\item LLVM jezici poput C-a i C++-a
+	\item WebAssembly
+\end{itemize}
+
+GraalVM je implementiran u javi. \\
+
+GraalVM je koristan i u radu sa mikroservisnom aritekturom. Nekolicina okvira za rad sa Java mikroservisima  (Java microservice frameworks) je već prihvatilo ovu platformu. Između ostalih to su Micronaut, Spring, Helidon i Quarkus. \\
+
+Još jedna od mogućnosti koje GraalVM nudi je implemenitranje novih jezika i alata korišćenjem biblioteke Truffle.
+
+Korišćenjem ovog alata je omoućeno efikasnije korišćenje više jezika na jednom projektu. Pri korišćenju više jezika na projektu je moguće kodom jednom jezika pozivati funkcije koje su pisane u drugom jeziku. Dopušteno je deljenje struktura podataka između kodova pisanih u različitim jezicima. Na ovaj način je omogućeno da sakupljač otpadaka radi na celom projektu iako se satoji iz više jezika, kao i jednostavnije debagovanje.
+GraalVM čine Java Virtuelna Mašina - JVM i Java Development Kit - JDK. Ovaj alat je proizvod kompanije Oracle. Njegov cilj je da se omogući brže izvršavanje koda, a da se pri tome koristi manje memorije.
+
+Ovaj alat je dostupan na Linux, Windows i macOS operativnim sistemima. \\
+
+GraalVM je dostupan kao Community i Enterprise edition. Community edition je otvorenog koda i dostupna je na gituhb repozitorijumu (https://github.com/oracle/graal). Enterprise Edition razvija i licensira kompanije Oracle. \\
+Dva osnovna načina na koje se može doprineti projektu GraalVM je prijavljiavanjem github issue-a i pravljenjem pull requestova. \\
+
+GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntellliJ IDEA, Visual Studio Code. Ova okruženja su posebno dobra je podržaju sve jezike koje podržava i GraalVM. GraalVM obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
+
+\subsection{Istorijski razvoj}
+\label{subsec:Istorijski razvoj}
+
+Java Virtuelne mašine poput Oraklovog Java HotSpotVM i IBMov Java VM postoje već 15ak godina. Međutim za druge jezike nije postojalo tako nešto. Cilj ovog projekta je bio da se napavi objedinjena virtuelna mašina koja bi mogla efikasno da izvršava kodove različtih jezika.\\
+
+GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. 
+
 \section{Prvi naslov}
 \label{sec:naslov1}
 
