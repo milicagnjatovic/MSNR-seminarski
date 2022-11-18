@@ -103,6 +103,24 @@ Java Virtuelne mašine poput Oraklovog Java HotSpotVM i IBMov Java VM postoje ve
 
 GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. 
 
+\section{Šta obuhvata projekat?}
+\label{sec:Šta obuhvata projekat?}
+
+Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. preko šezdeset naučnih radova je izdato od strane razvojnog tima. Sam projekat obuhvata više komponenti koje ga čine korisnim i inovativnim.
+
+\subsection{GraalVM kao zamena za JVM}
+\label{sub:GraalVM kao zamena za JVM}
+
+Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne mašine, on može da pokreće Javu, Skalu, Kotlin i sve ostale jezike koje se prevode u Java bajt kod. Od 2019. može se izvršavati na Linux-u, a od verzije 20.1.0 ima podršku i za Windows. \\
+
+Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse, neke demonstracije pokazuju da Ruby program izvršava i do 30 puta brže od originalne implementacije.
+Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30 procenata brže na GraalVM, što je i dalje obećavajući rezultat. \\
+
+Kada su testirani Java programi rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije.U svakom slučaju, GraalVM će svakako biti mnogo brži od klaične JVM. Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++, to omogućava lakše proširenje i optimizaciju od strane Java programera.
+
+\subsection{Truffle - kompajler za kompajlere}
+\label{Truffle - kompajler za kompajlere}
+
 \section{Karakteristike}
 \label{sec:Karakteristike}
 
@@ -118,7 +136,6 @@ GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno
 
 \subsection{Napredni alati}
 \label{sub:Napredni alati}
-
 
 \section{Zaključak}
 \label{sec:zakljucak}
