@@ -6,6 +6,9 @@
 \usepackage[T2A]{fontenc} % enable Cyrillic fonts
 \usepackage[utf8]{inputenc} % make weird characters work
 \usepackage{graphicx}
+\usepackage{floatrow}
+\usepackage{subcaption}
+\usepackage[export]{adjustbox}
 
 \usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
@@ -81,25 +84,52 @@ GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezici
 	\item WebAssembly
 \end{itemize}
 
-GraalVM je implementiran u javi. \\
 
-GraalVM je koristan i u radu sa mikroservisnom aritekturom. Nekolicina okvira za rad sa Java mikroservisima  (Java microservice frameworks) je već prihvatilo ovu platformu. Između ostalih to su Micronaut, Spring, Helidon i Quarkus. \\
+\begin{figure}
+	\caption{Podržani jezici}
+	\begin{subfigure}{\linewidth}
+	\includegraphics[width=0.16\linewidth]{imgs/java_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/c_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/cpp_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/r_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/python_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/ruby_logo.png}
+	\end{subfigure}
+
+	\begin{center}
+	\includegraphics[width=0.5\linewidth]{imgs/graalvm_logo.png}	
+	\end{center} 
+
+	\begin{subfigure}{\linewidth}
+	\includegraphics[width=0.16\linewidth]{imgs/js_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/nodejs_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/clojure_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/kotlin_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/scala_logo.png}
+	\includegraphics[width=0.16\linewidth]{imgs/wa_logo.png}
+	\end{subfigure}
+	\label{podržani jezici}
+\end{figure}
+
+GraalVM je implementiran u javi.
+
+Ovaj alat je koristan u radu sa mikroservisnom arhitekturom. Nekolicina okvira za rad sa Java mikroservisima je već prihvatila ovu platformu. Između ostalih to su Micronaut, Spring, Helidon i Quarkus. 
 
 Još jedna od mogućnosti koje GraalVM nudi je implemenitranje novih jezika i alata korišćenjem biblioteke Truffle.
 
-Korišćenjem ovog alata je omogućeno efikasnije korišćenje više jezika na jednom projektu. Pri korišćenju više jezika na projektu je moguće kodom jednom jezika pozivati funkcije koje su pisane u drugom jeziku. Dopušteno je deljenje struktura podataka između kodova pisanih u različitim jezicima. Na ovaj način je omogućeno da sakupljač otpadaka radi na celom projektu iako se satoji iz više jezika, kao i jednostavnije debagovanje.
-GraalVM čine Java Virtuelna Mašina - JVM i Java Development Kit - JDK. Ovaj alat je proizvod kompanije Oracle. Osnovni cilj ovog projekta je omogućiti brže izvršavanje koda, a da se pri tome koristi manje memorije.
+Korišćenjem ovog alata je omogućeno efikasnije korišćenje više jezika na jednom projektu. U projektu je moguće kodom jednog jezika pozivati funkcije pisane u drugom jeziku. Dopušteno je deljenje struktura podataka između kodova pisanih u različitim jezicima. Na ovaj način je omogućeno da sakupljač otpadaka radi na celom projektu bez obzira na to koliko različitih jezika je korišćeno. Ovim je omogućeno i jednostavnije debagovanje.\\
+GraalVM čine Java Virtuelna Mašina - JVM i Java Development Kit - JDK. Ovaj alat je proizvod kompanije Oracle. Osnovni cilj projekta je omogućiti brže izvršavanje koda, a da se pri tome koristi manje memorije.
 
 Ovaj alat je dostupan na Linux, Windows i macOS operativnim sistemima. \\
 
-Dostupne su dve verzije GraalVM-a:
+Dostupna su dva izdanja GraalVM-a:
 
 \begin{description}
-	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem githb issue-a i pravljenjem pull requests.
+	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem githb issue-a i pravljenjem pull request-ova.
 	\item [Enterprise eddition] razvija i licensira kompanija Oracle.
 \end{description}
 
-GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntellliJ IDEA, Visual Studio Code. Ova okruženja su posebno dobra je podržaju sve jezike koje podržava i GraalVM. GraalVM obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
+GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntellliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržaju sve jezike koje podržava i GraalVM. Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
 
 \subsection{Istorijski razvoj}
 \label{subsec:Istorijski razvoj}
@@ -113,11 +143,11 @@ GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno
 \begin{description}
 	\item[Facebook] \hfill \\
 	Društvena mreža Facebook ima ogroman broj korisnika zbog čega je jako bitno da se kod dobro skalira i brzo izvršava.
-	Na serverskoj strani koristi Javu i Spark framework za rad sa velikom količnimo podataka. Prelazak sa Oracle JDK-a i Open JDK-a na GraalVM se sveo samo na promenu runtime okruženja, bez ikakvih promena u kodu. Izmereno je prosečno ubrzanje 1.1x korišćenjem Community verzije i ubrzanje 1.42x korišćenjem Enterprise verzije GraalVM-a.  (https://medium.com/graalvm/graalvm-at-facebook-af09338ac519)
+	Na serverskoj strani koristi Javu i Spark framework za rad sa velikom količnimo podataka. Prelazak sa Oracle JDK-a i Open JDK-a na GraalVM se sveo samo na promenu runtime okruženja, bez ikakvih promena u kodu. Izmereno je prosečno ubrzanje 1.1x korišćenjem Community verzije i ubrzanje 1.42x korišćenjem Enterprise verzije GraalVM-a.
 	
 	\item[Twitter] \hfill \\
 	Kao i Facebook, Twiter je društvena mreža sa milionima korisnika. Sa porastom broja korisnika bile su neophodne promene koje bi omogućile brzo izvršavanje uz minimalne troškove. Većina mikroservisa tvitera je implementirano u Skali. Prelaskom na GraalVM je omogućeno 8-11\% ušteda na procesoru. 
-	(https://www.oracle.com/a/ocom/docs/graalvm-twitter-casestudy-constellation.pdf)
+
 	
 	\item[Standard Chartered Bank] \hfil \\
 	Ova kompanija je između ostalog koristila Javu, Python sa SpringBoot okvirom kako bi obezbedila stabilnost i robusnost programa. Pre par godina kompanije je odlučila da svoju aplikaciju prebaci u cloud, što je donelo nove izazove. GraalVM je obezbedio jednostavan prelazak na cloud time što podržava tehnologije koje su programi već koristili. GraalVM je omogućio skalabilnost i ubrzanje od 7\%.
@@ -126,20 +156,13 @@ GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno
 	Goldman Sachs je investiciona banka. Ova kompanija ima svoj programski jezik Slang koji ima funkcije pogodne za njiove potrebe. Jezik je dosta glomazan i potrebno mu je unapređenje. Prevođenje celog koda u neki drugi jezik bi bilo previše zahtevno. GraalVM i Truffle su omogućili unapređenje i ubrzanje izvršavanja koda pisanog u Slangu, a da je pri tom napisana minimalna količina novog koda.
 	
 	\item[Nvidia]  \hfil \\
-	Nvdia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke katice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM. Kako jezici u GraalVM efikasno komuniciraju tako je omogućna jednostavna komunikacija sa grafičkom karticom, čime je omogućeno dodatno ubrzanje izvršavanja.
+	Nvdia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke katice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM. Kako jezici u GraalVM efikasno komuniciraju međusobno tako je omogućna jednostavna komunikacija sa jezikom grafičke kartice i samom grafičkom.
 	
 	\item[Politie]  \hfil \\
-	Holandska policija je imala monolitnu aplikaciju koja je koristila između ostalog TypeScrip, Angular, Scala, Axon, SpringBoot, Slick i R. Ova aplikacija je obrađivala velike količine podataka u realnom vremenu, ali to je bilo veoma sporo. Cilj je bio preći u cloud i na mikroservisnu ahitekturu, a pri tom ne implemenitrati sve iz početka u nekom novom jeziku. GraalVM je omogućio ovaj prelazak i ubrzanje, pri čemu je ostao značajan deo starog koda.
+	Holandska policija je imala monolitnu aplikaciju koja je koristila između ostalog TypeScrip, Angular, Scala, Axon, SpringBoot, Slick i R. Ova aplikacija je obrađivala velike količine podataka u realnom vremenu, ali to je bilo veoma sporo. Cilj je bio preći u cloud i na mikroservisnu ahitekturu, a pri tom ne implemenitrati sve iz početka. GraalVM je omogućio ovaj prelazak i ubrzanje, pri čemu je ostao značajan deo starog koda.
 	
 \end{description}
 
-
-\subsection{Istorijski razvoj}
-\label{subsec:Istorijski razvoj}
-
-Java Virtuelne mašine poput Oraklovog Java HotSpotVM i IBMov Java VM postoje već 15ak godina. Međutim za druge jezike nije postojalo tako nešto. Cilj ovog projekta je bio da se napavi objedinjena virtuelna mašina koja bi mogla efikasno da izvršava kodove različtih jezika.\\
-
-GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. 
 
 \section{Šta obuhvata projekat?}
 \label{sec:Šta obuhvata projekat?}
