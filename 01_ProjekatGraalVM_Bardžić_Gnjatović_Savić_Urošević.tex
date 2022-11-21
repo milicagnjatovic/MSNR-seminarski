@@ -58,7 +58,7 @@
 
 \title{Projekat GraalVM\\ \small{Seminarski rad u okviru kursa\\Metodologija stručnog i naučnog rada\\ Matematički fakultet}}
 
-\author{Bojan Bardžić, Milica Gnjatović, Pavle Savić, Andrija Urošević\\ kontakt email prvog, drugog, trećeg, \texttt{mi18083@alas.matf.bg.ac.rs}}
+\author{Bojan Bardžić, Milica Gnjatović, Pavle Savić, Andrija Urošević\\ kontakt email prvog, drugog,  \texttt{pavlesavic1389@gmail.com}, \texttt{mi18083@alas.matf.bg.ac.rs}}
 
 %\date{9.~april 2015.}
 
@@ -193,12 +193,42 @@ Sama optimizacija koda je zasnovana ideji parcijalne evaluacije. Truffle uzima i
 
 Standardni podržani jezici za Truffle su JavaScript sa okruženjem Node.js ugrađenim u njega, kao i Ruby, R i Python. Pored toga, Truffle ima u sebe ugrađen Sulong koji može da izvršava LLVM bitkod i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN. Ovim omogućavamo da GraalVM izvšrava veliki broj različitih programskih jezika kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku omogućavajući veću fleksibilnost pri pisanju programa.
 
-\subsection{Izvršavanje mašinskog koda na kaludu}
+\subsection{Izvršavanje mašinskog koda na klaudu}
 \label{sub:Izvršavanje mašinskog koda na klaudu}
 
 Jedna od glavnih funkcionalnosti koje uvodi ovaj projekat jeste kompajliranje Java programa sa bajt koda na mašinski kod. Ovo je novina koja nam dozvoljava tako nešto prvi put od kako postoji programski jezik Java. Jedan od slučajeva upotrebe za ovo je izvšavanje mikroservisa na klaudu. \\
 
-Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potrebna da na serverskoj strani mora postojati Java viruelna mašina, što dovodi do smanjenja zauzeća memorije na serveru. Još jedna prednost ovog pristupa je u tome što više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljeno. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju.
+Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potrebna da na serverskoj strani mora postojati Java virtuelna mašina, što dovodi do smanjenja zauzeća memorije na serveru. Još jedna prednost ovog pristupa je u tome što više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljeno. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju. 
+
+
+\begin{figure}
+	\begin{center}
+	\includegraphics[scale=0.25]{imgs/run_java.jpg}
+	\end{center}
+	\caption{Dva načina za pokretanje Java programa korišćenjem GraalVM-a}
+	\label{fig:run java}
+\end{figure}
+
+
+\subsection{Espresso - Java on Truffle}
+\label{sub:Espresso - Java on Truffle}
+
+Pored dva ustaljena načina za pokretanje koda napisanog u Java-i korišćenjem GraalVM-a od verzije 21.0 uvedena je nova komponenta, nazvana \emph{espresso}, koja predstavlja implementaciju JVM specifikacije, napisanu u Java-i, pomoću Truffle radnog okvira. Ova komponenta nije podrazumevano deo GraalVM-a ali može se lako instalirati korišćenjem \emph{GraalVM Updater tool}-a. Na raspolaganju je i za GraalVM distribucije zasnovane na Java-i 8, kao i na Java-i 11 tako da se može koristiti kao zamena za JVM po izboru. \\
+
+
+\emph{Java on Truffle} režim izvršavanja pokreće Java kod preko bajtkod interpretera implementiranog korišćenjem Truffle-a. Na ovaj način Java (i drugi JVM zasnovani jezici) pokreću se na isti način kao tradicionalni interpretirani i LLVM jezici koje GraalVM podržava što omogućava potpunu interoperabilnost sa njima. Iz tog razloga se mogu pozivati f-je napisane u ovim jezicima u Java-i, kao i Java f-je u drugim Truffle jezicima i razmenjivati podaci u zajedničkom memorijskom prostoru (\emph{polyglot} programi). \\
+
+Činjenica da je \emph{Java on Truffle} implementiran u Java-i (eng. \emph{self-hosting} smatra se \emph{Svetim gralom} u razvoju JVM-a. Kao implementacija JVM-a, da bi \emph{Java on Truffle} mogla da pokrene Java kod neophodan joj je pristup JCL-u (Java Class Library) i nativnim bibliotekama i metodama koje pruža JDK (Java Development Kit). \emph{Java on Truffle} ponovno koristi Java Archive datoteke i nativne biblioteke iz GraalVM distribucije. Kao posledica \emph{self-hosting}-a \emph{Java on Truffle} jeste metacirkularna VM - može pokretati samu sebe nekoliko nivoa u dubinu (pri čemu svakim silaskom u dubinu postaje nešto sporija). Druga prednost ovoga je da je izvorni kod razumljiv Java programerima. Ovaj nivo transparentnosti, kroz zajednicu otvorenog koda, čini \emph{Java on Truffle} projektom koji se ubrzano razvija i unapređuje.
+
+\begin{figure}
+	\begin{center}
+	\includegraphics[scale=0.35]{imgs/java_on_truffle.png}
+	\end{center}
+	\caption{\emph{Java on Truffle} u GraalVM ekosistemu}
+	\label{fig: java on truffle}
+\end{figure}
+
+
 
 \section{Karakteristike}
 \label{sec:Karakteristike}
