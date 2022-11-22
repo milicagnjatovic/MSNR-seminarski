@@ -88,7 +88,9 @@
 
 \maketitle
 
-\abstract{U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite pažnju da je pored ove .pdf datoteke, u prilogu i odgovarajuća .tex datoteka, kao i .bib datoteka korišćena za generisanje literature. Na prvoj strani seminarskog rada su naslov, apstrakt i sadržaj, i to sve mora da stane na prvu stranu! Kako bi Vaš seminarski zadovoljio standarde i očekivanja, koristite uputstva i materijale sa predavanja na temu pisanja seminarskih radova. Ovo je samo šablon koji se odnosi na fizički izgled seminarskog rada (šablon koji \emph{morate} da koristite!) kao i par tehničkih pomoćnih uputstava. Pročitajte tekst pažljivo jer on sadrži i važne informacije vezane za zahteve obima i karakteristika seminarskog rada.}
+\abstract{
+Danas postoji veliki broj programskih jezika. Neki od njih su veoma aktuelni, neki su zastareli i neefikasni, neki se brzo razvijaju dok se neki više ne održavaju. Ako bismo imali jedan savršen jezik i dalje bi bio problem prevesti sve programe koji su u upotrebi u taj jedan jezik. GraalVM je projekat koji nam pruža mogućnost da izvršavamo aplikacije napisane u više programskih jezika, uključujući i jezike koji se slabo održavaju. Pored toga pokazaćemo kako GraalVM to radi efikasno i zašto ga veliki broj kompanija danas koristi. 
+}
 
 \tableofcontents
 
@@ -96,7 +98,7 @@
 
 \section{Uvod}
 \label{sec:uvod}
-GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezicima (slika~\ref{jezici}). Neki od jezika koje GraalVM podržava \cite{graalvm}: 
+GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezicima (slika~\ref{fig:jezici}). Neki od jezika koje GraalVM podržava \cite{graalvm}: 
 \begin{itemize}
 	\item Java
 	\item JavaScript i Node.js
@@ -348,13 +350,14 @@ U tabeli~\ref{alati} su prikazani dostupni alati i njihove funkcionalnosti unuta
 \section{Zaključak}
 \label{sec:zakljucak}
 
-GraalVM je sveti gral!
 
-Projekat GraalVM donosi sa sobom mnogo novina, između ostalog imamo efikasan JDK pisan za Javu i ostale jezike zasnovane na JVM-u. Pored toga imamo i podršku za poliglot programiranje, kao i efikasno interpretiranje preko Truffle okvira. 
+Projekat GraalVM donosi sa sobom mnogo novina, između ostalog imamo efikasan JDK pisan za Javu i ostale jezike zasnovane na JVM-u. Pored toga ima i podršku za poliglot programiranje, kao i efikasno interpretiranje. 
 
-GraalVM se pokazao kao dobra alternativa JVM. 
+Truffle nam nudi mogućnost pravljenja interpretera za potpuno nove jezike, kao i za stare koji su postali neefikasni i skupi za održavanje.
 
-Truffle
+GraalVM se pokazao kao dobra alternativa JVM. Kroz benčmarkove smo utvrdili da GraalVM daje dobre performanse. 
+
+Ovaj projekat je pokazao veliki potencijal u pogledu optimizacije i dopunjavanja kompajlera.
 
 O kvalitetu ovog projekta nam govori činjenica da ovaj alat koriste mnoge velike kompanije, između ostalih, Oracle, Facebook, Twitter, i Nvidia. Posebno je dobro što imamo veliku kompaniju koja stoji iza projekta kao i zajednicu koja ga održava.
 
