@@ -117,7 +117,7 @@ Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. p
 
 Java Virtuelne mašine poput Oraklovog Java HotSpotVM i IBMov Java VM postoje već 20ak godina. Međutim nije postojala virtuelna mašina koja bi omogućila efikasno izvršavanje kodova pisanih u različitim jezicima. Cilj ovog projekta je bio da se napavi objedinjena virtuelna mašina koja bi ovo omogućila.\\
 
-GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. \cite{graalvmreleases}
+GraalVM 19.0 je objavljen u Maju 2019. i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. \cite{graalvmreleases}
 
 
 
@@ -155,7 +155,7 @@ Ovaj alat je koristan u radu sa mikroservisnom arhitekturom. Nekolicina okvira z
 
 Još jedna od mogućnosti koje GraalVM nudi je implemenitranje novih jezika i alata korišćenjem biblioteke Truffle.
 
-GraalVM je implementiran u javi. Čine ga Java Virtuelna Mašina - JVM i Java Development Kit - JDK. \\
+GraalVM je implementiran u Javi. Čine ga Java Virtuelna Mašina - JVM i Java Development Kit - JDK. \\
 Ovaj alat omogućava brže izvršavanje koda, a da se pri tome koristi manje memorije.
 
 GraalVM je dostupan na Linux, Windows i macOS operativnim sistemima. \\
@@ -163,11 +163,11 @@ GraalVM je dostupan na Linux, Windows i macOS operativnim sistemima. \\
 Dostupna su dva izdanja GraalVM-a:
 
 \begin{description}
-	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem githb issue-a i pravljenjem pull request-ova. \cite{graalvmCommunity}
+	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem github issue-a i pravljenjem pull request-ova. \cite{graalvmCommunity}
 	\item [Enterprise eddition] razvija i licensira kompanija Oracle. \cite{graalvmEnterprise}
 \end{description}
 
-GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntellliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržaju sve jezike koje podržava i GraalVM. Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
+GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntelliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržavaju sve jezike koje podržava i GraalVM. Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
 
 \section{Šta obuhvata projekat?}
 \label{sec:Šta obuhvata projekat?}
@@ -182,15 +182,15 @@ Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne maš
 Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse, neke demonstracije pokazuju da Ruby program izvršava i do 30 puta brže od originalne implementacije.
 Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\%  brže na GraalVM, što je i dalje obećavajući rezultat. \\
 
-Kada su testirani Java programi rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije.U svakom slučaju, GraalVM će biti brži od klaične JVM. Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++, to omogućava lakše proširenje i optimizaciju od strane Java programera.
+Kada su testirani Java programi rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije.U svakom slučaju, GraalVM će biti brži od klasične JVM. Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++, to omogućava lakše proširenje i optimizaciju od strane Java programera.
 
 \subsection{Truffle - kompajler za kompajlere}
 \label{Truffle - kompajler za kompajlere}
 
 Truffle je biblioteka otvorenog koda za pravljenje alata i implementacija programskih jezika kao interpretera za samomodifikujuća apstraktna sintaksna stabla. On nam dozvoljava 
 da pravimo interpretere bez većih problema, ali prednost njegovog korišćenja je u tome što se interpretirani kod izvršava podjednako brzo kao i kompajlirani kod.
-On je korišćen za pisanje interpretera za jezik JavaScrpit u GraalVM-u. Pri izvršavanju koda potrebno mu je neko vreme da se zagreje, ali kada dostigne optimalne performanse
-one su okvirno iste kao V8 kompajler kompanije Google. \\
+On je korišćen za pisanje interpretera za jezik JavaScrpit u GraalVM-u. Pri izvršavanju koda potrebno mu je neko vreme da se ''zagreje'', ali kada dostigne optimalne performanse
+one su okvirno iste kao kod kompajlera V8 kompanije Google. \\
 
 Sama optimizacija koda je zasnovana ideji parcijalne evaluacije. Truffle uzima interpreter koji smo mu dali i naš program i koristi JIT kompajler i promene sintaksnog stabla da izvrši optimizacije u našem kodu. Da bi se utvrdilo koje optimizacije je potrebno izvršiti program mora prvo biti pokrenut i zbog toga se javlja sporije vreme izvršavanja na početku.\\
 
@@ -203,7 +203,7 @@ Standardni podržani jezici za Truffle su JavaScript sa okruženjem Node.js ugra
 
 Jedna od glavnih funkcionalnosti koje uvodi ovaj projekat jeste kompajliranje Java programa sa bajt koda na mašinski kod. Ovo je novina koja nam dozvoljava tako nešto prvi put od kako postoji programski jezik Java. Jedan od slučajeva upotrebe za ovo je izvšavanje mikroservisa na klaudu. \\
 
-Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potrebna da na serverskoj strani mora postojati Java virtuelna mašina, što dovodi do smanjenja zauzeća memorije na serveru. Još jedna prednost ovog pristupa je u tome što više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljeno. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju. 
+Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potreba da na serverskoj strani mora postojati Java virtuelna mašina, što dovodi do smanjenja zauzeća memorije na serveru. Još jedna prednost ovog pristupa je u tome što više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljeno. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju. 
 
 
 \begin{figure}
