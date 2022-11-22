@@ -9,6 +9,26 @@
 \usepackage{floatrow}
 \usepackage{subcaption}
 \usepackage[export]{adjustbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+
+\pgfplotsset{%
+    % #1: index in the group(0,1,2,...)
+    % #2: number of plots of that group
+    bar group size/.style 2 args={%
+        /pgf/bar shift={%
+                % total width = n*w + (n-1)*skip
+                % -> subtract half for centering
+                -0.5*(#2*\pgfplotbarwidth + (#2-1)*\pgfkeysvalueof{/pgfplots/bar group skip})  +
+                % the '0.5*w' is for centering
+                (.5+#1)*\pgfplotbarwidth + #1*\pgfkeysvalueof{/pgfplots/bar group skip}},%
+    },
+    bar group skip/.initial=2pt,
+    plot 0/.style={blue,fill=blue!30!white,mark=none},%
+    plot 1/.style={red,fill=red!30!white,mark=none},%
+    plot 2/.style={brown!60!black,fill=brown!30!white,mark=none},%
+    plot 3/.style={gray,fill=gray,mark=none},%
+}
 
 \usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
@@ -25,7 +45,7 @@
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
-\lstset{ 
+\lstset{% 
   backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
   basicstyle=\scriptsize\ttfamily,        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
@@ -203,18 +223,87 @@ Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potrebna
 \section{Karakteristike}
 \label{sec:Karakteristike}
 
+Projekat \emph{GraalVM} karakterišu visoke performanse, poliglot programiranje, \emph{GraalVM AOT} (\emph{ahead-of-time}) kompilacija u \emph{Native Image}, napredni alati\cite{graalvm}. U narednim pod sekcijama će biti opisani svaki od ovih karakteristika.
+
+\subsection{Visoke performanse}
+\label{sub:perf}
+
+Jedna od karakteristika kojom \emph{GraalVM} može da se pohvali, jestu veoma visoke performanse u odnosu na \emph{OracleJDK}, i \emph{OpenJDK}. 
+
+Šipek i drugi \cite{vsipek19} pokretanjem \emph{DaCapo} benčmarka \cite{dacapo} pokazuju da \emph{GraalVM CE}, i posebno \emph{GraalVM EE} daju bolje performanse u odnosu na \emph{JDK10} i \emph{JDK11} (slika~\ref{fig:dacapo}). Na testu h2 \emph{GraalVM CE} daje rezultate i za 19.8\% bolje od \emph{JDK11}. Na drugim testovima vidimo malo poboljšanje \emph{GraalVM} kompajlera u odnosu na \emph{JDK}, ali i to da \emph{JDK} u malom broju testova daje bolje rezultate. Pored toga, treba uočavamo da \emph{GraalVM EE} u odnosu na \emph{GraalVM CE} nad h2 testovima daje rezultate bolje i za 47.06\%, što je veoma velika razlika. Što se stabilnosti tiče, tj.\ veličine standardne devijacije u performansam, najbolje se pokazuje \emph{JDK11}, a najgore \emph{GraalVM EE}.
+
+\begin{figure}
+\begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+        width=0.85\textwidth,
+        x tick label style={/pgf/number format/1000 sep=},
+        ylabel=Prosečno vreme u $ms$,
+        enlargelimits=0.15,
+        legend style={at={(0.5,-0.15)},
+        anchor=north,legend columns=-1},
+        ybar,
+        bar width=7pt,
+        xtick={0,1,2,3,4,5},
+        xticklabels={h2, lusearch, xalan, pmd, sunflow, jython},
+        ]
+        \addplot[plot 0,bar group size={0}{4}]
+        coordinates {(0,4494.95) (1,2683.40) (2,863.32) (3,138.23) (4,5062.05) (5,6652.86)};
+        \addplot[plot 1,bar group size={1}{4}]
+        coordinates {(0,5327.10) (1,2757.10) (2,277.41) (3,194.61) (4,5626.25) (5,7038.34)};
+        \addplot[plot 2,bar group size={2}{4}]
+        coordinates {(0,10821.85) (1,2874.50) (2,870.72) (3,201.95) (4,5417.25) (5,6433.60)};
+        \addplot[plot 3,bar group size={3}{4}]
+        coordinates {(0,9550.05) (1,2886.15) (2,232.51) (3,276.76) (4,6151.25) (5,6672.10)};
+        \legend{GraalVM EE, GraalVM CE, JDK10, JDK11}
+    \end{axis}
+\end{tikzpicture}
+\end{center}
+    \caption{\emph{DaCapo} benčmark na \emph{GraalVM EE, GraalVM CE, JKD10, JDK11}}
+\label{fig:dacapo}
+\end{figure}
+
+Pored \emph{DaCapo} benčmarka razvija se i novi \emph{Renaissance} benčmark. \emph{Renaissance} benčmark obećava prednosti nad konkurencijom, tako što koristi moderna, realna, konkurentna, i objektno orijentisana preopterećenja kako bi prikazao bolju sliku performansi kompajlera \cite{prokopec19}. Pokretanjem ovih testova uočeno je značajno poboljšanje \emph{GraalVM JIT} kompajlera u odnosu na \emph{JDK11} i \emph{JDK17} \cite{renaissance}.
+
+Poboljšanje u performansama je vidljivo i na drugim benčmarkovima. Tako je uočeno da \emph{Scala} ima bolje performanse kada se koristi \emph{GraalVM} optimizator, takođe na \emph{DaCapo} benčmarkovima \cite{stadler13, dacapo}. Claud servisi, takođe, dobijaju značajno unapređenje \cite{sipek21}. 
+
+Treba napomenuti da postoje istraživanja koja pokazuju da \emph{GraalVM} ne pokazuje značajna poboljšanja u odnosu na \emph{JKD}. Fong i drugi \cite{fong21} pokazuju da u nekim slučajevima \emph{GraalVM} daje podjednake čak i lošije rezultate. 
+
 \subsection{Native Image}
-\label{sub:Native Image}
+\label{sub:nim}
 
-\subsection{Napredni optimizator}
-\label{sub:Napredni optimizator}
+\emph{GraalVM} pruža tehnologiju \emph{Native Image} \cite{graalvm}. \emph{Native Image} predstavlja izvršivi binarni fajl koji je dobijen \emph{GraalVM AOT} kompajlerom. Ovaj fajl sadrži klase aplikacije, klase biblioteka, zavisne klase i statički linkovan kod iz \emph{JDK}-a. Dobijeni izvršivi fajl se ne pokreće na \emph{Java VM}, već on uključuje potrebne dodatke iz \emph{Java VM}-e. Za rezultat imamo to da se dobijeni program pokreće brže, jer učitava samo potrebne klase. Program je sigurniji, jer se sa manjom bazom koda mogućnost nastanka baga smanjuje. Program se lako dostavlja, jer se kapacitet kontejnera smanjuje.
 
-\subsection{Polygot}
-\label{sub:Polygot}
+\subsection{Poliglot programiranje}
+\label{sub:poliglot}
 
+Jedna od ključnih karakteristika koju \emph{GraalVM} pruža jeste poliglot programiranje \cite{graalvm}. Poliglot programiranje podrazumeva da programeri za rešavanje neko problema koriste odgovarajući programski jezik. Tako rešene probleme onda koriste u projektu. Mehanizmi integracije više programskih jezika stvara dodatne kompleksnosti. Postoje mnogi radovi koji tvrde da se efikasnost programera, samim tim i programa smanjuje uvođenjem više jezičke strukture \cite{peterson21, hao20}. Sa ciljem rešavanja ovog problema \emph{GraalVM} pruža \emph{TruffleVM} koji obećava lako i jednostavno prenošenje podataka, i korišćenje konstrukcija nekog programskog jezika unutar nekog drugog programskog jezika \cite{grimmer15}.
 
 \subsection{Napredni alati}
-\label{sub:Napredni alati}
+\label{sub:alati}
+
+U tabeli~\ref{alati} su prikazani dostupni alati i njihove funkcionalnosti unutar projekta \emph{GraalVM} \cite{graalvm}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|}
+        \hline
+        VS Code Extensions & Radno okruženje unutar VS Code-a\\
+        \hline
+        GraalVM Dashboard & Vizualna reprezentacija delova\\
+        \hline
+        Chrome Debugger & Debager za JS, Ruby, R i Python\\
+        \hline
+        VisualVM & Profajler, monitor, aktivni tredovi\ldots\\
+        \hline
+        GraalVM Insight & Praćenje programa u izvršavanju\\
+        \hline
+        Ideal Graph Visualizer & Faze kompilacije\\
+        \hline
+    \end{tabular}
+    \caption{Napredni alati unutar Projekta \emph{GraalVM}}
+    \label{alati}
+\end{table}
 
 \section{Zaključak}
 \label{sec:zakljucak}
@@ -223,14 +312,5 @@ Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potrebna
 \appendix
 \bibliography{seminarski} 
 \bibliographystyle{plain}
-
-\appendix
-\section{Dodatak}
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-Ovde pišem dodatne stvari, ukoliko za time ima potrebe.
-
 
 \end{document}
