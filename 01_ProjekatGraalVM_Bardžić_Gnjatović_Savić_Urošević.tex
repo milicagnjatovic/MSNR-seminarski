@@ -97,7 +97,7 @@ U ovom tekstu je ukratko prikazana osnovna forma seminarskog rada. Obratite paž
 
 \section{Uvod}
 \label{sec:uvod}
-GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezicima. GraalVM podržava naredne jezike: 
+GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezicima\cite{graalvm}. GraalVM podržava naredne jezike: 
 \begin{itemize}
 	\item Java
 	\item JavaScript i Node.js
@@ -110,18 +110,18 @@ GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezici
 U ovom radu ćemo proći kroz osnovne elemente i ciljeve ovog alata, šta je to inovativno uvedeno ovim projektom i gde se sve koristi. 
 \end{itemize}
 
-\section{Istorijski razvoj}
+\subsection{Istorijski razvoj}
 \label{subsec:Istorijski razvoj}
 
-Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. preko šezdeset naučnih radova je izdato od strane razvojnog tima. \\
+Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. preko šezdeset naučnih radova je izdato od strane razvojnog tima. Jedan od prvi radova koji iznose ideju ovog projekta je \textit{One VM to rule them all}. \cite{onevmtorulethemall} \\
 
 Java Virtuelne mašine poput Oraklovog Java HotSpotVM i IBMov Java VM postoje već 20ak godina. Međutim nije postojala virtuelna mašina koja bi omogućila efikasno izvršavanje kodova pisani u raličitim jezicima. Cilj ovog projekta je bio da se napavi objedinjena virtuelna mašina koja bi ovo omogućila.\\
 
-GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. 
+GraalVM 19.0 je objavljen u Maju 2019e i to je prva verzija ovog alata. Trenutno najnovija verzija je GraaLVM 22.1.0 objavljena u Aprilu 2022. \cite{graalvmreleases}
 
 
 
-\section{Jedan alat - više jezika}
+\subsection{Jedan alat - više jezika}
 
 
 \begin{figure}
@@ -163,8 +163,8 @@ GraalVM je dostupan na Linux, Windows i macOS operativnim sistemima. \\
 Dostupna su dva izdanja GraalVM-a:
 
 \begin{description}
-	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem githb issue-a i pravljenjem pull request-ova.
-	\item [Enterprise eddition] razvija i licensira kompanija Oracle.
+	\item [Community eddition] je otvorenog koda i dostupno je u \href{https://github.com/oracle/graal}{github repozitorijumu}. Korisnici mogu doprineti razvoju ove verzije kreiranjem githb issue-a i pravljenjem pull request-ova. \cite{graalvmCommunity}
+	\item [Enterprise eddition] razvija i licensira kompanija Oracle. \cite{graalvmEnterprise}
 \end{description}
 
 GraalVM podržavaju razvojna okruženja i protokoli za debagovanje. Neka od podržanih okruženja su Eclipse, NetBeans, IntellliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržaju sve jezike koje podržava i GraalVM. Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
@@ -325,23 +325,22 @@ U tabeli~\ref{alati} su prikazani dostupni alati i njihove funkcionalnosti unuta
 \begin{description}
 	\item[Facebook] \hfill \\
 	Društvena mreža Facebook ima ogroman broj korisnika zbog čega je jako bitno da se kod dobro skalira i brzo izvršava.
-	Na serverskoj strani koristi Javu i Spark framework za rad sa velikom količnimo podataka. Prelazak sa Oracle JDK-a i Open JDK-a na GraalVM se sveo samo na promenu runtime okruženja, bez ikakvih promena u kodu. Izmereno je prosečno ubrzanje 1.1x korišćenjem Community verzije i ubrzanje 1.42x korišćenjem Enterprise verzije GraalVM-a.
+	Na serverskoj strani koristi Javu i Spark framework za rad sa velikom količnimo podataka. Prelazak sa Oracle JDK-a i Open JDK-a na GraalVM se sveo samo na promenu runtime okruženja, bez ikakvih promena u kodu. Izmereno je prosečno ubrzanje 1.1x korišćenjem Community verzije i ubrzanje 1.42x korišćenjem Enterprise verzije GraalVM-a. \cite{graalvmusecases}
 	
 	\item[Twitter] \hfill \\
-	Kao i Facebook, Twiter je društvena mreža sa milionima korisnika. Sa porastom broja korisnika bile su neophodne promene koje bi omogućile brzo izvršavanje uz minimalne troškove. Većina mikroservisa tvitera je implementirano u Skali. Prelaskom na GraalVM je omogućeno 8-11\% ušteda na procesoru. 
-	
+	Kao i Facebook, Twiter je društvena mreža sa milionima korisnika. Sa porastom broja korisnika bile su neophodne promene koje bi omogućile brzo izvršavanje uz minimalne troškove. Većina mikroservisa tvitera je implementirano u Skali. Prelaskom na GraalVM je omogućeno 8-11\% ušteda na procesoru. \cite{graalvmusecases}	
 	
 	\item[Standard Chartered Bank] \hfil \\
-	Ova kompanija je između ostalog koristila Javu, Python sa SpringBoot okvirom kako bi obezbedila stabilnost i robusnost programa. Pre par godina kompanije je odlučila da svoju aplikaciju prebaci u cloud, što je donelo nove izazove. GraalVM je obezbedio jednostavan prelazak na cloud time što podržava tehnologije koje su programi već koristili. GraalVM je omogućio skalabilnost i ubrzanje od 7\%.
-	
+	Ova kompanija je između ostalog koristila Javu, Python sa SpringBoot okvirom kako bi obezbedila stabilnost i robusnost programa. Pre par godina kompanije je odlučila da svoju aplikaciju prebaci u cloud, što je donelo nove izazove. GraalVM je obezbedio jednostavan prelazak na cloud time što podržava tehnologije koje su programi već koristili. GraalVM je omogućio skalabilnost i ubrzanje od 7\%.\cite{graalvmusecases}
+		
 	\item[Goldman Sachs]  \hfil \\
-	Goldman Sachs je investiciona banka. Ova kompanija ima svoj programski jezik Slang koji ima funkcije pogodne za njiove potrebe. Jezik je dosta glomazan i potrebno mu je unapređenje. Prevođenje celog koda u neki drugi jezik bi bilo previše zahtevno. GraalVM i Truffle su omogućili unapređenje i ubrzanje izvršavanja koda pisanog u Slangu, a da je pri tom napisana minimalna količina novog koda.
+	Goldman Sachs je investiciona banka. Ova kompanija ima svoj programski jezik Slang koji ima funkcije pogodne za njiove potrebe. Jezik je dosta glomazan i potrebno mu je unapređenje. Prevođenje celog koda u neki drugi jezik bi bilo previše zahtevno. GraalVM i Truffle su omogućili unapređenje i ubrzanje izvršavanja koda pisanog u Slangu, a da je pri tom napisana minimalna količina novog koda.\cite{graalvmusecases}
 	
 	\item[Nvidia]  \hfil \\
-	Nvdia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke katice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM. Kako jezici u GraalVM efikasno komuniciraju međusobno tako je omogućna jednostavna komunikacija sa jezikom grafičke kartice i samom grafičkom.
+	Nvdia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke katice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM. Kako jezici u GraalVM efikasno komuniciraju međusobno tako je omogućna jednostavna komunikacija sa jezikom grafičke kartice i samom grafičkom.\cite{graalvmusecases}
 	
 	\item[Politie]  \hfil \\
-	Holandska policija je imala monolitnu aplikaciju koja je koristila između ostalog TypeScrip, Angular, Scala, Axon, SpringBoot, Slick i R. Ova aplikacija je obrađivala velike količine podataka u realnom vremenu, ali to je bilo veoma sporo. Cilj je bio preći u cloud i na mikroservisnu ahitekturu, a pri tom ne implemenitrati sve iz početka. GraalVM je omogućio ovaj prelazak i ubrzanje, pri čemu je ostao značajan deo starog koda.
+	Holandska policija je imala monolitnu aplikaciju koja je koristila između ostalog TypeScrip, Angular, Scala, Axon, SpringBoot, Slick i R. Ova aplikacija je obrađivala velike količine podataka u realnom vremenu, ali to je bilo veoma sporo. Cilj je bio preći u cloud i na mikroservisnu ahitekturu, a pri tom ne implemenitrati sve iz početka. GraalVM je omogućio ovaj prelazak i ubrzanje, pri čemu je ostao značajan deo starog koda.\cite{graalvmusecases}
 	
 \end{description}
 
