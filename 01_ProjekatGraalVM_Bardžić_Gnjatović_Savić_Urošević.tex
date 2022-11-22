@@ -177,7 +177,7 @@ Sam projekat obuhvata više komponenti koje ga čine korisnim i inovativnim.
 \subsection{GraalVM kao zamena za JVM}
 \label{sub:GraalVM kao zamena za JVM}
 
-Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne mašine, on može da pokreće Javu, Skalu, Kotlin i sve ostale jezike koje se prevode u Java bajt kod. Od 2019. može se izvršavati na Linux-u, a od verzije 20.1.0 ima podršku i za Windows. \\
+Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne mašine, on može da pokreće Java, Scala i Kotlin programe, kao i sve ostale programe pisane u jezicima koje se prevode u Java bajt kod. Od 2019. može se izvršavati na Linux-u, a od verzije 20.1.0 ima podršku i za Windows. \\
 
 Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse, neke demonstracije pokazuju da Ruby program izvršava i do 30 puta brže od originalne implementacije.
 Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\%  brže na GraalVM, što je i dalje obećavajući rezultat. \\
@@ -198,8 +198,8 @@ Sama optimizacija koda je zasnovana ideji parcijalne evaluacije. Truffle uzima i
 
 Standardni podržani jezici za Truffle su JavaScript sa okruženjem Node.js ugrađenim u njega, kao i Ruby, R i Python. Pored toga, Truffle ima u sebe ugrađen Sulong koji može da izvršava LLVM bitkod i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN. Ovim omogućavamo da GraalVM izvšrava veliki broj različitih programskih jezika kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku omogućavajući veću fleksibilnost pri pisanju programa.
 
-\subsection{Izvršavanje mašinskog koda na klaudu}
-\label{sub:Izvršavanje mašinskog koda na klaudu}
+\subsection{Izvršavanje mašinskog koda na cloud-u}
+\label{sub:Izvršavanje mašinskog koda na cloud-u}
 
 Jedna od glavnih funkcionalnosti koje uvodi ovaj projekat jeste kompajliranje Java programa sa bajt koda na mašinski kod. Ovo je novina koja nam dozvoljava tako nešto prvi put od kako postoji programski jezik Java. Jedan od slučajeva upotrebe za ovo je izvšavanje mikroservisa na klaudu. \\
 
@@ -241,14 +241,14 @@ Pored dva ustaljena načina za pokretanje koda napisanog u Java-i korišćenjem 
 \section{Karakteristike}
 \label{sec:Karakteristike}
 
-Projekat \emph{GraalVM} karakterišu visoke performanse, poliglot programiranje, \emph{GraalVM AOT} (\emph{ahead-of-time}) kompilacija u \emph{Native Image}, napredni alati\cite{graalvm}. U narednim pod sekcijama će biti opisani svaki od ovih karakteristika.
+Projekat \emph{GraalVM} karakterišu visoke performanse, poliglot programiranje, \emph{GraalVM AOT} (\emph{ahead-of-time}) kompilacija u \emph{Native Image}, napredni alati\cite{graalvm}. U narednim podsekcijama će biti opisani svaki od ovih karakteristika.
 
 \subsection{Visoke performanse}
 \label{sub:perf}
 
-Jedna od karakteristika kojom \emph{GraalVM} može da se pohvali, jestu veoma visoke performanse u odnosu na \emph{OracleJDK}, i \emph{OpenJDK}. 
+Jedna od karakteristika kojom \emph{GraalVM} može da se pohvali, jesu veoma visoke performanse u odnosu na \emph{OracleJDK}, i \emph{OpenJDK}. 
 
-Šipek i drugi \cite{vsipek19} pokretanjem \emph{DaCapo} benčmarka \cite{dacapo} pokazuju da \emph{GraalVM CE}, i posebno \emph{GraalVM EE} daju bolje performanse u odnosu na \emph{JDK10} i \emph{JDK11} (slika~\ref{fig:dacapo}). Na testu h2 \emph{GraalVM CE} daje rezultate i za 19.8\% bolje od \emph{JDK11}. Na drugim testovima vidimo malo poboljšanje \emph{GraalVM} kompajlera u odnosu na \emph{JDK}, ali i to da \emph{JDK} u malom broju testova daje bolje rezultate. Pored toga, treba uočavamo da \emph{GraalVM EE} u odnosu na \emph{GraalVM CE} nad h2 testovima daje rezultate bolje i za 47.06\%, što je veoma velika razlika. Što se stabilnosti tiče, tj.\ veličine standardne devijacije u performansam, najbolje se pokazuje \emph{JDK11}, a najgore \emph{GraalVM EE}.
+Šipek i drugi \cite{vsipek19} pokretanjem \emph{DaCapo} benčmarka \cite{dacapo} pokazuju da \emph{GraalVM CE}, i posebno \emph{GraalVM EE} daju bolje performanse u odnosu na \emph{JDK10} i \emph{JDK11} (slika~\ref{fig:dacapo}). Na testu h2 \emph{GraalVM CE} daje rezultate i za 19.8\% bolje od \emph{JDK11}. Na drugim testovima vidimo malo poboljšanje \emph{GraalVM} kompajlera u odnosu na \emph{JDK}, ali i to da \emph{JDK} u malom broju testova daje bolje rezultate. Pored toga, treba uočavamo da \emph{GraalVM EE} u odnosu na \emph{GraalVM CE} nad h2 testovima daje rezultate bolje i za 47.06\%, što je veoma velika razlika. Što se stabilnosti tiče, tj.\ veličine standardne devijacije u performansama, najbolje se pokazuje \emph{JDK11}, a najgore \emph{GraalVM EE}.
 
 \begin{figure}
 \begin{center}
