@@ -118,7 +118,7 @@ Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. p
 
 Java Virtuelne mašine poput Oracle Java HotSpotVM i IBM Java VM postoje više od dve decenije. Međutim nije postojala virtuelna mašina koja bi omogućila efikasno izvršavanje kodova pisanih u različitim jezicima. Cilj ovog projekta je bio da se napravi objedinjena virtuelna mašina koja bi ovo omogućila.
 
-Prva verzija GraalVM 19.0 je objavljen u maju 2019. Trenutno najnovija verzija je GraalVM 22.3.0, objavljena u oktobru 2022. \cite{graalvmreleases}.
+Prva verzija GraalVM 19.0 je objavljena u maju 2019. Trenutno najnovija verzija je GraalVM 22.3.0, objavljena u oktobru 2022. \cite{graalvmreleases}.
 
 \subsection{Jedan alat --- više jezika}
 \label{subsec:alatjezik}
@@ -148,7 +148,7 @@ Prva verzija GraalVM 19.0 je objavljen u maju 2019. Trenutno najnovija verzija j
 	\end{subfigure}
 	\label{fig:jezici}
 \end{figure}
-Upotrebom ovog alata je omogućeno efikasnije korišćenje više jezika na jednom projektu. U projektu je moguće kodom jednog jezika pozivati funkcije pisane u drugom jeziku. Dopušteno je deljenje struktura podataka između kodova pisanih u različitim jezicima. Zbog toga sakupljač otpadaka radi na celom projektu, bez obzira na to koliko različitih jezika je korišćeno. Ovim je omogućeno i jednostavnije debagovanje.
+Upotrebom ovog alata je omogućeno efikasnije korišćenje više jezika na jednom projektu. U projektu je moguće kodom pisanim u jednom jeziku pozivati funkcije pisane u drugom jeziku. Dopušteno je deljenje struktura podataka između kodova pisanih u različitim jezicima. Zbog toga sakupljač otpadaka radi na celom projektu, bez obzira na to koliko različitih jezika je korišćeno. Ovim je omogućeno i jednostavnije debagovanje.
 
 Ovaj alat je koristan u radu sa mikroservisnom arhitekturom. Nekolicina okvira za rad sa Java mikroservisima je već prihvatila ovu platformu. Između ostalih to su Micronaut, Spring, Helidon i Quarkus \cite{graalvm}. 
 
@@ -177,7 +177,7 @@ Kao što je prethodno navedeno, ovaj projekat uvodi neke nove koncepte. Sam proj
 
 Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne mašine, on može da pokreće Java, Scala i Kotlin programe, kao i sve ostale programe pisane u jezicima koje se prevode u Java bajt kod. Od 2019. može se izvršavati na Linux-u, a od verzije 20.1.0 ima podršku i za Windows.
 
-Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse. Neke demonstracije pokazuju da Ruby program izvršava i do 30 puta brže od originalne implementacije \cite{graalvm}. Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\% brže na GraalVM, što je i dalje obećavajući rezultat \cite{graalvm}.
+Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse. Neke demonstracije pokazuju da se Ruby program izvršava i do 30 puta brže od originalne implementacije \cite{graalvm}. Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\% brže na GraalVM, što je i dalje obećavajući rezultat \cite{graalvm}.
 
 Kada su testirani Java programi rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru \cite{graalvm}. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije. U svakom slučaju, GraalVM će biti brži od klasične JVM.\ Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++. To omogućava lakše proširenje i optimizaciju od strane Java programera.
 
@@ -190,7 +190,7 @@ Optimizacija koda je zasnovana na ideji parcijalne evaluacije \cite{graalvm}. Tr
 
 Takođe, pri pisanju interpretera koristeći Truffle možemo da naglasimo gde i kada želimo da kod bude optimizovan. U nekim slučajevima promena u izvornom kodu može da dovede do greške u programu i u tom slučaju je potrebno deoptimizovati kod. Sve ove optimizacije i izbacivanja nekorišćenog koda iz našeg programa dovode do velike brzine izvršavanja.
 
-Standardni podržani jezici za Truffle su JavaScript zajedno sa okruženjem Node.js, kao i Ruby, R i Python. Pored toga, Truffle ima u sebe ugrađen Sulong koji može da izvršava LLVM bitkod i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN.\ Ovim omogućavamo da GraalVM izvšrava veliki broj različitih programskih jezika, kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku, omogućavajući time veću fleksibilnost pri pisanju programa.
+Standardni podržani jezici za Truffle su JavaScript zajedno sa okruženjem Node.js, kao i Ruby, R i Python. Pored toga, Truffle ima u sebi ugrađen Sulong koji može da izvršava LLVM bitkod i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN.\ Ovim se omogućava da GraalVM izvšrava veliki broj različitih programskih jezika, kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku, omogućavajući time veću fleksibilnost pri pisanju programa.
 
 \subsection{Izvršavanje mašinskog koda na cloud-u}
 \label{sub:cloud}
@@ -218,7 +218,7 @@ Postoje dva ustaljena načina za prevođenje koda napisanog u Java-i korišćenj
 Činjenica da je \emph{Java on Truffle} implementiran u Java-i (eng. \emph{self-hosting}) smatra se \emph{Svetim gralom} u razvoju JVM-a. Da bi \emph{Java on Truffle} mogla da pokrene Java kod neophodan joj je pristup JCL-u (Java Class Library), nativnim bibliotekama i metodama koje pruža JDK (Java Development Kit). \emph{Java on Truffle} ponovno koristi Java Archive datoteke i nativne biblioteke iz GraalVM distribucije \cite{grooteman2017java}. Kao posledica \emph{self-hosting}-a \emph{Java on Truffle} jeste metacirkularna VM\footnote{Metacirkularna VM može pokretati samu sebe nekoliko nivoa u dubinu, pri čemu svakim silaskom postaje nešto sporija.}. Druga prednost ovoga je da je izvorni kod razumljiv Java programerima. Ovaj nivo transparentnosti, kroz zajednicu otvorenog koda, čini \emph{Java on Truffle} projektom koji se ubrzano razvija i unapređuje.
 
 \emph{Java on Truffle} istovremeno je JVM i Java program, što znači da može biti pokrenuta unutar drugog Java programa. Ovo daje mogućnost razdvajanja aplikacije u komponente sa zajedničkom funkcionalnošću kako bi se proces programiranja učinio lakšim za upravljanje i podigla ponovna upotrebljivost koda. Na ovaj način može se ugraditi Java 8 kontekst u Java 11 aplikaciju i obrnuto, koristeći \emph{GraalVM Polyglot API} \cite{graalvm}. Na primer ako su na raspolaganju obe distribucije (JDK 11 i JDK 8),
-\emph{Java on Truffle} može biti pokrenuta kao Java 8 aplikacija, a potom može biti iskorišćena za pokretanje Java 11 bajtkoda i obrnuto \cite{grooteman2017java}. Ako postoji biblioteka dostupna samo za Java-u 8, sada je moguće prebaciti se na noviji JDK i, uz manje programerske napore da se upostavi interoperabilnost, koristiti je u Java 11 aplikaciji. Takođe ovime se povećava nivo izolovanosti \emph{host} VM-a i Java programa koji se pokreće. Ovo povećava bezbednost pri izvršavanju manje pouzdanog ili nepoznatog koda \cite{graalvm}.
+\emph{Java on Truffle} može biti pokrenuta kao Java 8 aplikacija, a potom može biti iskorišćena za pokretanje Java 11 bajtkoda i obrnuto \cite{grooteman2017java}. Ako postoji biblioteka dostupna samo za Java-u 8, sada je moguće prebaciti se na noviji JDK i, uz manje programerske napore da se uspostavi interoperabilnost, koristiti je u Java 11 aplikaciji. Takođe ovime se povećava nivo izolovanosti \emph{host} VM-a i Java programa koji se pokreće. Ovo povećava bezbednost pri izvršavanju manje pouzdanog ili nepoznatog koda \cite{graalvm}.
 
 \emph{Java on Truffle} ima sve osnovne komponente JVM, pa tako i JDWP (Java Debug Wire Protocol) koji služi za komunikaciju između debagera i ciljnog JVM-a. Nije potrebno ništa dodatno konfigurisati da bi se debagovale aplikacije pokrenute preko \emph{Java on Truffle}. Moguće je korišćenje debagera integrisanog razvojnog okruženja \cite{graalvm}. Još jedna pogodnost koju nam \emph{Java on Truffle} nudi jesu unapređene mogućnosti za redefinisanje klasa u fazi izvršavanja (eng. \emph{Hot Swap}) u odnosu na HotSpot JVM tokom debagovanja. Neke od podržanih promena u verziji GraalVM 21.0:
 \begin{itemize}
@@ -344,7 +344,7 @@ U tabeli~\ref{alati} su prikazani dostupni alati i njihove funkcionalnosti unuta
         Goldman Sachs je investiciona banka. Ova kompanija ima svoj programski jezik Slang koji ima funkcije pogodne za njihove potrebe. Jezik je dosta glomazan i potrebno mu je unapređenje. Prevođenje celog koda u neki drugi jezik bi bilo previše zahtevno. GraalVM i Truffle su omogućili unapređenje i ubrzanje izvršavanja koda pisanog u Slang-u, a da je pri tom napisana minimalna količina novog koda \cite{graalvmusecases}.
 	
 	\item[Nvidia]  \hfill \\
-	Nvidia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke kartice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM.\ Kako jezici u GraalVM efikasno komuniciraju međusobno tako je omogućena jednostavna komunikacija sa jezikom grafičke kartice i grafičkom karticom \cite{graalvmusecases}.
+	Nvidia je jedan od najvećih proizvođača grafičkih kartica. Iako neki jezici jednostavno mogu da ubrzaju izvršavanje korišćenjem grafičke kartice, za neke druge to može biti izazovno. GraalVM i Truffle su omogućili kreiranje grCuda jezika koji je kao dodatni jezik GraalVM-a.\ Kako jezici u GraalVM efikasno komuniciraju međusobno tako je omogućena jednostavna komunikacija sa jezikom grafičke kartice i grafičkom karticom \cite{graalvmusecases}.
 	
 	\item[Politie]  \hfill \\
 	Holandska policija je imala monolitnu aplikaciju koja je koristila između ostalog TypeScript, Angular, Scala, Axon, SpringBoot, Slick i R. Ova aplikacija je obrađivala velike količine podataka u realnom vremenu, ali to je bilo veoma sporo. Cilj je bio preći na cloud i mikroservisnu ahitekturu, a pri tom ne implementirati sve ispočetka. GraalVM je omogućio ovaj prelazak i ubrzanje, pri čemu je ostao značajan deo starog koda \cite{graalvmusecases}.
@@ -366,7 +366,7 @@ O kvalitetu ovog projekta nam govori činjenica da ovaj alat koriste mnoge velik
 
 GraalVM je u ovom radu predstavljen kao nešto izuzetno korisno i efikasno. Dalje se postavlja pitanje `Da li GraalVM ima konkurenciju?'.
 
-Trenutno nema projekata sličnih ovome. Prema tome, glavna konkurencija ostaju kompajleri i alati za pojedinčna jezike. Danas se kao glavna konkurncija navode Amazon Coretto, Red Hat, OpenJDK, Azul Platform Prime i Microsoft Build of OpenJDK. 
+Trenutno nema projekata sličnih ovome. Prema tome, glavna konkurencija ostaju kompajleri i alati za pojedinačne jezike. Danas se kao glavna konkurencija navode Amazon Coretto, Red Hat, OpenJDK, Azul Platform Prime i Microsoft Build of OpenJDK. 
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix

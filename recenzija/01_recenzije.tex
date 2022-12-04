@@ -1,0 +1,235 @@
+
+
+ % !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{report}
+
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8x,utf8]{inputenc} % make weird characters work
+\usepackage[serbian]{babel}
+%\usepackage[english,serbianc]{babel}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\odgovor}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\title{Projekat GraalVM\\ \small{Bojan Bardžić, Milica Gnjatović, Pavle Savić, Andrija Urošević}}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Uputstva}
+\emph{Prilikom predavanja odgovora na recenziju, obrišite ovo poglavlje.}
+
+Neophodno je odgovoriti na sve zamerke koje su navedene u okviru recenzija. Svaki odgovor pišete u okviru okruženja \verb"\odgovor", \odgovor{kako bi vaši odgovori bili lakše uočljivi.} 
+\begin{enumerate}
+
+\item Odgovor treba da sadrži na koji način ste izmenili rad da bi adresirali problem koji je recenzent naveo. Na primer, to može biti neka dodata rečenica ili dodat pasus. Ukoliko je u pitanju kraći tekst onda ga možete navesti direktno u ovom dokumentu, ukoliko je u pitanju duži tekst, onda navedete samo na kojoj strani i gde tačno se taj novi tekst nalazi. Ukoliko je izmenjeno ime nekog poglavlja, navedite na koji način je izmenjeno, i slično, u zavisnosti od izmena koje ste napravili. 
+
+\item Ukoliko ništa niste izmenili povodom neke zamerke, detaljno obrazložite zašto zahtev recenzenta nije uvažen.
+
+\item Ukoliko ste napravili i neke izmene koje recenzenti nisu tražili, njih navedite u poslednjem poglavlju tj u poglavlju Dodatne izmene.
+\end{enumerate}
+
+Za svakog recenzenta dodajte ocenu od 1 do 5 koja označava koliko vam je recenzija bila korisna, odnosno koliko vam je pomogla da unapredite rad. Ocena 1 označava da vam recenzija nije bila korisna, ocena 5 označava da vam je recenzija bila veoma korisna. 
+
+NAPOMENA: Recenzije ce biti ocenjene nezavisno od vaših ocena. Na osnovu recenzije ja znam da li je ona korisna ili ne, pa na taj način vama idu negativni poeni ukoliko kažete da je korisno nešto što nije korisno. Vašim kolegama šteti da kažete da im je recenzija korisna jer će misliti da su je dobro uradili, iako to zapravo nisu. Isto važi i na drugu stranu, tj nemojte reći da nije korisno ono što jeste korisno. Prema tome, trudite se da budete objektivni. 
+\chapter{Recenzent \odgovor{--- ocena:} }
+	
+	
+	\section{O čemu rad govori?}
+	Rad prezentuje GraalVM koji predstavlja virtuelnu mašinu razvijenu za potrebe efikasnog pisanja i izvršavanja kodova u različitim jezicima. Fokus je na komponentama ovog projekta i njihovom pojedinačnom značaju. Ističe se da je GraalVM nov kompajler koji ima puno potencijala da nadmaši sve svoje prethodnike. Navode se prednosti GraalVM-a kroz upotrebu biblioteke Truffle, kroz visoke performanse i dr. 
+	% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+	
+	\section{Krupne primedbe i sugestije}
+	Potpoglavlje 1.1 vezano za istorijat bi trebalo da bude odvojena celina mimo samog uvoda, dok potpoglavlje 1.2 ne mora postojati samo kao potpoglavlje, nego se treba uvrstiti u okviru poglavlja 1. Potpoglavlje 2.4 je vidno obimnije od ostalih i potrebno ga je restruktuirati i potencijalno podeliti na više odvojenih podpoglavlja, dok je potpoglavlje 3.4 isuviše šturo, potrebno ga je potkrepiti sa još nekom rečenicom i dubljim objašnjenjem ili pak, u potuponosti izostaviti potpoglavlje i njegov sadašnji sadržaj spojiti sa već postojećim poglavljima na adekvatan način.
+	% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+	
+	\section{Sitne primedbe}
+	% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+	\begin{enumerate}
+		\item Poglavlje 1.1, poslednji pasus: umesto ''objavljen'' treba ''objavljena''.\\
+		\item Poglavlje 1.2, prvi pasus: umesto ''kodom jednog jezika'' preciznije je reći ''kodom pisanim na jednom jeziku''.\\
+		\item Poglavlje 1.2, šesti pasus: slovna greška u reči ''licensira''.\\
+		\item Poglavlje 2.1, drugi pasus, druga rečenica: fali ''se'' kod ''da''.\\
+		\item Poglavlje 2.1, treći pasus, prva rečenica: fali zarez nakon ''programi''.\\
+		\item Poglavlje 2.2, četvrti pasus, druga rečenica: umesto ''sebe'' treba ''sebi''.\\
+		\item Poglavlje 2.2, četvrti pasus, četvrta rečenica: umesto ''Ovim omogućavamo''	treba ''Ovim se omogućava''.\\
+		\item Poglavlje 2.4, treći pasus: izraz ''Svetim gralom''  staviti pod navodnike.\\
+		\item Poglavlje 2.4, četvrti pasus: fali slovo u reči ''upostavi''.\\
+		\item Poglavlje 2.4: pominje se termin ''poliglot programiranje'' koje je u radu tek kasnije objašnjeno.\\
+		\item Poglavlje 4, podnaslov Nvidia: umesto ''GraalVM'' staviti adekvatni nastavak ''GraalVM-u/GraalVM-a''.\\
+		\item Zaključak, poslednji pasus: umesto ''pojedinačna'' treba ''pojedinačne'', fali slovo u reči ''konkurncija''.\\
+	\end{enumerate}
+	
+	\section{Provera sadržajnosti i forme seminarskog rada}
+	% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+	
+	\begin{enumerate}
+		\item Da li rad dobro odgovara na zadatu temu?\\
+		Da, rad se fokusira na koncizna objašnjenja pojedinačnih komponenti i brojnih prednosti ovog projekta, kao i na trenutni nivo napretka i upotrebe.
+		\item Da li je nešto važno propušteno?\\
+		Ne, sve teme iz opisa su pokrivene, kao i neke druge.
+		\item Da li ima suštinskih grešaka i propusta?\\
+		Ne, rad pokriva sva istaknuta pravila i opravdava očekivanja.
+		\item Da li je naslov rada dobro izabran?\\
+		Da. Tema je konkretna i drugačiji naslov bi bio suvišan.
+		\item Da li sažetak sadrži prave podatke o radu?\\
+		Da, na jednostavan i precizan način uvodi i budi interesovanje za dalje čitanje.
+		\item Da li je rad lak-težak za čitanje?\\
+		Rad je lak za čitanje, pregledan i pisan tako da jedna tema prati drugu, čineći sve jednom celinom. 
+		\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+		Da, definitivno je potrebno predznanje, naročito za nekog ko je laik; tema je sama po sebi jako ustručena.
+		\item Da li je u radu navedena odgovarajuća literatura?\\
+		Da, literatura je adekvatna; korišćene su validne veb stranice, naučni radovi su sa stručnih sajtova, a i knjiga je uvrštena u literaturu.
+		\item Da li su u radu reference korektno navedene?\\
+		Da, reference su stavljane na prava mesta u okviru rečenica i postavljene su u dovoljnoj meri; veći deo teksta je njima potkrepljen. 
+		\item Da li je struktura rada adekvatna?\\
+		Većinom da, međutim propusti su navedeni u poglavlju o krupnim primedbama i sugestijama, jer bi ovim izmenama rad bio strukturno puno bolji.
+		\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+		Da, svi elementi su prisutni i u adekvatnom formatu.
+		\item Da li su slike i tabele funkcionalne i adekvatne?\\
+		Da, naročito ističem slike koje daju dinamiku i živopisnost radu, a uz to pružaju adekvatne informacije.
+	\end{enumerate}
+	
+	\section{Ocenite sebe}
+	% Napišite koliko ste upućeni u oblast koju recenzirate: 
+	% a) ekspert u datoj oblasti
+	% b) veoma upućeni u oblast
+	% c) srednje upućeni
+	% d) malo upućeni 
+	% e) skoro neupućeni
+	% f) potpuno neupućeni
+	% Obrazložite svoju odluku
+	U ovu oblast sam srednje upućena; rad sam apsolutno razumela, jer je većina tema pokrivena znanjem koje stičemo na fakultetu, čak i ono sto nije pokriveno fakultetskim obrazovanjem je lako savladivo, upravo zbog predznanja koje nam omogućava lako prilagođavanje novinama u modernom svetu programiranja.
+	
+	
+\chapter{Recenzent \odgovor{--- ocena:} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad opisuje projekat GraalVM koji predstavlja JDK visokih performansi namenjen da se ubrzaju programi pisani u nekom od jezika Java porodice.
+Opisane su glavne prednosti projekta u odnosu na tradicionalni JVM pristup i to: korišćenje više programskih jezika u okviru iste aplikacije,
+kao i različiti pristupi prevođenja Java-e(AOT i JIT) kao i osnovne primene projekta pre svega u cloud industriji.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+Jedna od ključnih zamerki je uvodna rečenica koja glasi: \textit{GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim
+jezicima}. Na zvaničnoj stranici projekta, GraalVM je opisan kao JDK visokih performansi namenjen da se ubrzaju programi napisani u Javi.
+Takođe, projekat nudi mogućnost prevođenja Java programa na dva načina:
+\begin{itemize}
+    \item GraalVM JIT kompajlera
+    \item AOT tehnologije, kojom se dobija binarna izvršna datoteka (Native Image)
+\end{itemize}
+Kao jedna od komponenti izdvaja se i Truffle radni okvir(eng.~{\em Framework}) koji omogućava korisnicima da pišu višejezične aplikacije 
+(eng.~{\em polyglot applications}). 
+Dakle, GraalVM ne predstavlja alat za pisanje i izvršavanje koda u različitim jezicima, već JDK koji nudi gore pomenute karakteristike(što 
+predstavlja daleko više od alata za pisanje višejezičnih aplikacija).
+
+U sekciji 2, navedeno je sledeće: \textit{Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\% brže na GraalVM}. 
+Kao potkrepljenje ove konstatacije naveden je link ka sledećoj referenci: \href{https://www.graalvm.org/}{https://www.graalvm.org/}. Na 
+navedenoj referenci nije moguće(barem ne jednostavno) pronaći ovaj podatak. Sugestija bi bila da referenca bude nešto konkretnija, kako bi se 
+potvrdila tačnost navedene tvrdnje.
+
+Rad je mogao biti nešto drugačije struktuiran, gde bi se u sekciji 2: (\textit{Šta obuhvata projekat?}) svakako trebali navesti GraalVM JIT 
+kompajler i Native image tehnologija(navedena u sekciji 3, koja opisuje karakteristike projekta). 
+
+Takođe, možda je trebalo prebaciti težište rada sa mogućnost pisanja višejezičnih aplikacija, na mesta na kojima se projekat može primeniti(i 
+zašto se na specifičnim mestima primene GraalVM-a ostvaruju bolji rezultati nego kada se koristi JVM). Svakako jedna od ključnih prednosti 
+GraalVM-a predstavlja unapređenje performansi Java jezika u određenim situacijama (najočigledniji primer je korišćenje GraalVM-a za cloud 
+aplikacije zbog niskog vremena zagrevanja (eng.~{\em warm-up time})). Ova stavka pomenuta je, ali procentualno daleko manje u odnosu na 
+višejezičnost.
+
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+U nekim situacijama, suština je ispravno napisana, ali način na koji su rečenice organizovane može zvučati komplikovano. Tako na primer: 
+\textit{GraalVM pruža tehnologiju pod nazivom Native Image [8]. Native Image predstavlja izvršivi binarni fajl koji je dobijen GraalVM AOT 
+kompilacijom}. U prvoj rečenici, termin Native Image upotrebljen je kao tehnologija, a već u narednoj rečenici Native Image je izvršni fajl 
+dobijen AOT kompilacijom. Suština je ispravna ali bi se rečenica mogla formulisati nešto drugačije, recimo \textit{"GraalVM pruža tehnologiju 
+Native Image. Ova tehnologija u pozadini koristi AOT kompajler kako bi se od Java programa dobila izvršiva biblioteka, takođe nazvana native 
+image."} Ako bi se pomnije obratila pažnja, u zvaničnoj dokumentaciji, kada se govori o Native Image-u kao tehnologiji, naziv se navodi sa oba 
+velika slova. S druge strane, kada se govori o izvršivoj datoteci, ime se navodi malim početnim slovima. 
+Potkrepljenje činjenice: \href{https://www.graalvm.org/22.0/reference-manual/native-image/}{https://www.graalvm.org/22.0/reference-manual/
+native-image/}
+
+\indent Reference koje ukazuju na veb stranice, bi trebale da budu nešto konkretnije. Većina navedenih referenci ukazuje samo na početnu stranicu, na kojoj se u većini slučajeva ne nalaze podaci koji su referencirani. 
+
+\indent Rad sadrži dosta termina koji su prevedeni bez adekvatnog stranog termina.
+
+\indent Na par mesta postoje sitne slovne greške(npr. JKD umesto JDK). 
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+U načelu rad sadrži sve ključne delove koje projekat sadrži, uz primedbu da se akcenat stavio na neke manje bitne delove projekta u odnosu na 
+neke ključne delove projekta. Akcenat rada je na višejezičnosti a ne na specifičnom pristupu prevođenja Java jezika i situacijama u kojima bi 
+se GraalVM pre koristio nego tradicionalni JVM. 
+
+\item Da li je nešto važno propušteno?\\
+Sve teme su pokrivene, uz primedbu da je o Native Image tehnologiji posvećen samo jedan pasus, a upravo ova tehnologija predstavlja jako bitan 
+deo projekta GraalVM.
+
+\item Da li ima suštinskih grešaka i propusta?\\
+Osim uvodne rečenice, u kojoj je sam GraalVM pogrešno definisan, ostatak projekta nema suštinskih grešaka.
+
+\item Da li je naslov rada dobro izabran?\\
+Navedeni naslov odgovara temi koja je opisana u projektu.
+
+\item Da li sažetak sadrži prave podatke o radu?\\
+Kao i uvodna rečenica, sažetak stavlja akcenat na višejezičnost, te je poželjno modifikovati ga, tako da se akcenat pomeri bliže definiciji da 
+GraalVM predstavlja JDK visokih performansi.
+
+\item Da li je rad lak-težak za čitanje?\\
+Obzirom na kompleksnost projekta o kojem rad govori, rad sadrži dosta stručne terminologije, što ga čini težim za čitanje(što nije primedba 
+autorima rada, već posledica kompleksnosti projekta).
+
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Kao što je pomenuto u prethodnoj tačci, rad sadrži dosta stručne terminologije, i opisa tehnologija koje se ne koriste u velikoj meri(ili barem 
+u obliku u kojem se koriste u ovom projektu), te je za njegovo razumevanje potrebno značajno predznanje.
+
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Literatura je odgovarajuća uz već navedenu primedbu da bi reference ka veb lokacijama mogle biti konkretnije(ka konkretnoj a ne ka početnoj 
+strani).
+
+\item Da li su u radu reference korektno navedene?\\
+Pomenuto u prethodnoj tačci.
+
+\item Da li je struktura rada adekvatna?\\
+Određene delove bi trebalo zameniti, kako je to već navedeno. Primer: Native Image prebaciti u sekciju 2(Šta projekat obuhvata), dok bi se 
+podaci o performansama(konkretno za Ruby jezik) mogle izmestiti u sekciju 3(Karakteristike).
+
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Da. Rad sadrži sve tražene elemente i adekvatan broj strana. 
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+
+
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Smatram da sam srednje upućen u oblast koju recenziram jer sam jako zainteresovan za projekat o kojem rad govori.
+
+
+
+\chapter{Dodatne izmene}
+%Ovde navedite ukoliko ima izmena koje ste uradili a koje vam recenzenti nisu tražili. 
+
+\end{document}
