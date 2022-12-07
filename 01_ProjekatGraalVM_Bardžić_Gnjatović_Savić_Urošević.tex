@@ -98,9 +98,8 @@ Danas postoji veliki broj programskih jezika. Neki od njih su veoma aktuelni, ne
 
 \section{Uvod}
 \label{sec:uvod}
-GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezicima (slika~\ref{fig:jezici}). Neki od jezika koje GraalVM podržava \cite{graalvm}: 
+GraalVM predstavlja JDK (eng \emph{Java Development Kit}) visokih performansi\cite{graalvm}. GraalVM omogućava ubrzanje izvršavanja uz korišćenje manje resursa. Java aplikacije je ovim moguće prevesi na dva načina: AOT(eng \emph{Ahead Of Time}) i JIT (eng. \emph{Just In Time}). Pored Jave, neki od jezika koje GraalVM podržava su(slika~\ref{fig:jezici}): 
 \begin{itemize}
-	\item Java
 	\item JavaScript i Node.js
 	\item Python
 	\item Ruby
@@ -109,7 +108,7 @@ GraalVM je alat koji omogućava pisanje i izvršavanje koda u različitim jezici
 	\item WebAssembly\\
 \end{itemize}
 
-U ovom radu prolazimo kroz osnovne elemente i ciljeve ovog alata, šta je to inovativno uvedeno ovim projektom i gde se sve koristi. 
+U ovom radu prolazimo kroz osnovne elemente i ciljeve ovog projekta, šta je to inovativno uvedeno i gde se sve koristi. 
 
 \subsection{Istorijski razvoj}
 \label{subsec:istorija}
@@ -162,7 +161,7 @@ Dostupna su dva izdanja GraalVM-a:
 
 \begin{description}
 	\item [Community edition] je otvorenog koda i dostupno je na github-u. Korisnici mogu doprineti razvoju ove verzije \cite{graalvmCommunity}.
-	\item [Enterprise edition] razvija i licensira kompanija Oracle \cite{graalvmEnterprise}.
+	\item [Enterprise edition] razvija i licencira kompanija Oracle \cite{graalvmEnterprise}.
 \end{description}
 
 GraalVM je podržan od strane razvojnih okruženja i protokola za debagovanje. Neka od tih okruženja su Eclipse, NetBeans, IntelliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržavaju sve jezike koje podržava i GraalVM.\ Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
@@ -280,7 +279,7 @@ Jedna od karakteristika kojom \emph{GraalVM} može da se pohvali, jesu veoma vis
     \end{axis}
 \end{tikzpicture}
 \end{center}
-    \caption{\emph{DaCapo} benčmark na \emph{GraalVM EE, GraalVM CE, JKD10, JDK11}.}
+    \caption{\emph{DaCapo} benčmark na \emph{GraalVM EE, GraalVM CE, JDK10, JDK11}.}
 \label{fig:dacapo}
 \end{figure}
 
@@ -288,7 +287,7 @@ Pored \emph{DaCapo} benčmarka razvija se i novi \emph{Renaissance} benčmark. \
 
 Poboljšanje u performansama je vidljivo i na drugim benčmarkovima. Tako je uočeno da \emph{Scala} ima bolje performanse kada se koristi \emph{GraalVM} optimizator, takođe i na \emph{DaCapo} benčmarkovima \cite{stadler13, dacapo}. \emph{Cloud} servisi, takođe, dobijaju značajno unapređenje \cite{sipek21}. 
 
-Treba napomenuti da postoje istraživanja koja pokazuju da \emph{GraalVM} ne pokazuje značajna poboljšanja u odnosu na \emph{JKD}. Fong i drugi \cite{fong21} pokazuju da u nekim slučajevima \emph{GraalVM} daje podjednake čak i lošije rezultate. 
+Treba napomenuti da postoje istraživanja koja pokazuju da \emph{GraalVM} ne pokazuje značajna poboljšanja u odnosu na \emph{JDK}. Fong i drugi \cite{fong21} pokazuju da u nekim slučajevima \emph{GraalVM} daje podjednake čak i lošije rezultate. 
 
 \subsection{Native Image}
 \label{sub:nim}
