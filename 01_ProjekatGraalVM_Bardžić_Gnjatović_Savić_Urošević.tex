@@ -180,20 +180,23 @@ Kada su testirani Java programi rezultati su bili manje optimistični, performan
 \subsection{Truffle --- kompajler za kompajlere}
 \label{sub:truffle}
 
-Truffle je biblioteka otvorenog koda za pravljenje alata i implementacija programskih jezika kao interpretera za samomodifikujuća apstraktna sintaksna stabla \cite{graalvm}. On nam dozvoljava da pravimo interpretere bez većih problema. Osnovna prednost njegovog korišćenja je u tome što se interpretirani kod izvršava podjednako brzo kao i program dobijen prevođenjem. Truffle je korišćen za pisanje interpretera za jezik JavaScrpit u GraalVM-u. Pri izvršavanju koda potrebno mu je neko vreme da se ``zagreje'', ali kada dostigne optimalne performanse one su okvirno iste kao kod kompajlera V8 kompanije Google.
+Truffle je biblioteka otvorenog koda za pravljenje alata i implementacija programskih jezika kao interpretera za samomodifikujuća apstraktna sintaksna stabla (eng. \emph{abstract syntax tree}) \cite{graalvm}. On nam dozvoljava da pravimo interpretere bez većih problema. Osnovna prednost njegovog korišćenja je u tome što se interpretirani kod izvršava podjednako brzo kao i program dobijen prevođenjem. Truffle je korišćen za pisanje interpretera za jezik JavaScrpit u GraalVM-u. Pri izvršavanju koda potrebno mu je neko vreme da se ``zagreje'', ali kada dostigne optimalne performanse one su okvirno iste kao kod kompajlera V8 kompanije Google.
 
-Optimizacija koda je zasnovana na ideji parcijalne evaluacije \cite{graalvm}. Truffle uzima interpreter koji smo mu dali i naš program, zatim koristi JIT kompajler i promenom sintaksnog stabla vrši optimizaciju koda. Da bi se utvrdilo koje optimizacije je potrebno izvršiti program mora prvo biti pokrenut, zbog toga se javlja sporije vreme izvršavanja na početku.
+Optimizacija koda je zasnovana na ideji parcijalne evaluacije (eng. \emph{partial evaluation}) \cite{whataboutgraalvm}. Truffle uzima interpreter koji smo mu dali i naš program, zatim koristi JIT kompajler i promenom sintaksnog stabla vrši optimizaciju koda. Da bi se utvrdilo koje optimizacije je potrebno izvršiti program mora prvo biti pokrenut, zbog toga se javlja sporije vreme izvršavanja na početku.
 
 Takođe, pri pisanju interpretera koristeći Truffle možemo da naglasimo gde i kada želimo da kod bude optimizovan. U nekim slučajevima promena u izvornom kodu može da dovede do greške u programu i u tom slučaju je potrebno deoptimizovati kod. Sve ove optimizacije i izbacivanja nekorišćenog koda iz našeg programa dovode do velike brzine izvršavanja.
 
-Standardni podržani jezici za Truffle su JavaScript zajedno sa okruženjem Node.js, kao i Ruby, R i Python. Pored toga, Truffle ima u sebe ugrađen Sulong koji može da izvršava LLVM bitkod i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN.\ Ovim se omogućava da GraalVM izvšrava veliki broj različitih programskih jezika, kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku, omogućavajući time veću fleksibilnost pri pisanju programa.
+Standardni podržani jezici za Truffle su JavaScript zajedno sa okruženjem Node.js, kao i Ruby, R i Python. Pored toga, Truffle ima u sebe ugrađen Sulong koji može da izvršava LLVM bitkod (eng. \emph{LLVM bitcode}) i tako izvšava programe pisane na jezicima kao što su C, C++, C\#, D, Lua i FORTRAN.\ Ovim se omogućava da GraalVM izvšrava veliki broj različitih programskih jezika, kao i da se funkcije iz jednog jezika pozivaju u drugom jeziku, omogućavajući time veću fleksibilnost pri pisanju programa.
 
-\subsection{Izvršavanje mašinskog koda na cloud-u}
+\subsection{Native Image}
 \label{sub:cloud}
 
-Jedna od glavnih funkcionalnosti koje uvodi ovaj projekat jeste kompajliranje Java programa sa bajt koda na mašinski kod. Ovo je funkcionalnost koja nam dozvoljava tako nešto prvi put od kako postoji programski jezik Java. Jedan od slučajeva upotrebe je izvšavanje mikroservisa na cloud-u \cite{sipek21}.
+\emph{GraalVM} pruža tehnologiju \emph{Native Image} \cite{graalvm}. \emph{Native Image} predstavlja izvršivi binarni fajl koji je dobijen \emph{GraalVM AOT} kompilacijom. Ovaj fajl sadrži klase aplikacije, klase biblioteka, zavisne klase i statički linkovan kod iz \emph{JDK}-a. Dobijeni izvršivi fajl se ne pokreće na \emph{Java VM}, već on uključuje potrebne dodatke iz \emph{Java VM}-e. Za rezultat imamo da se dobijeni program pokreće brže jer učitava samo potrebne klase. Program je sigurniji, jer se sa manjom bazom koda mogućnost nastanka greške smanjuje.
+ Program se lako isporučuje, jer se kapacitet kontejnera smanjuje. \\
 
-Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potreba da na serverskoj strani mora postojati Java virtuelna mašina. Ovo dovodi do smanjenja zauzeća memorije na serveru. Još jedna prednost ovog pristupa je u tome što više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljena. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju. 
+Prevođenje Java programa sa bajt koda na mašinski kod je funkcionalnost koja nam dozvoljava tako nešto prvi put od kako postoji programski jezik Java. Jedan od slučajeva upotrebe ove tehnologije je izvšavanje mikroservisa (eng. \emph{microservices}) na cloud-u \cite{sipek21}.
+
+Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potreba da na serverskoj strani mora postojati Java virtuelna mašina. Ovo dovodi do smanjenja zauzeća memorije na serveru. Kao što smo spomenuli,  više nije potrebno da se za naše programe učitava mnoštvo Java klasa pri pokretanju, od kojih većina neće biti upotrebljena. Ovo dovodi do bržeg izvršavanja naših programa na serverskoj strani i sprečava sporo izvšavanje pri prvom pokretanju (eng. \emph{cold start}). 
 
 \begin{figure}
 	\begin{center}
@@ -286,10 +289,9 @@ Poboljšanje u performansama je vidljivo i na drugim benčmarkovima. Tako je uo�
 
 Treba napomenuti da postoje istraživanja koja pokazuju da \emph{GraalVM} ne pokazuje značajna poboljšanja u odnosu na \emph{JDK}. Fong i drugi \cite{fong21} pokazuju da u nekim slučajevima \emph{GraalVM} daje podjednake čak i lošije rezultate. 
 
-\subsection{Native Image}
-\label{sub:nim}
+%\subsection{Native Image}
+%\label{sub:nim}
 
-\emph{GraalVM} pruža tehnologiju \emph{Native Image} \cite{graalvm}. \emph{Native Image} predstavlja izvršivi binarni fajl koji je dobijen \emph{GraalVM AOT} kompilacijom. Ovaj fajl sadrži klase aplikacije, klase biblioteka, zavisne klase i statički linkovan kod iz \emph{JDK}-a. Dobijeni izvršivi fajl se ne pokreće na \emph{Java VM}, već on uključuje potrebne dodatke iz \emph{Java VM}-e. Za rezultat imamo da se dobijeni program pokreće brže jer učitava samo potrebne klase. Program je sigurniji, jer se sa manjom bazom koda mogućnost nastanka greške smanjuje. Program se lako isporučuje, jer se kapacitet kontejnera smanjuje.
 
 \subsection{Poliglot programiranje}
 \label{sub:poliglot}
