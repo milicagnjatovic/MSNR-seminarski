@@ -98,7 +98,7 @@ Danas postoji veliki broj programskih jezika. Neki od njih su veoma aktuelni, ne
 
 \section{Uvod}
 \label{sec:uvod}
-GraalVM predstavlja JDK (eng \emph{Java Development Kit}) visokih performansi\cite{graalvm}. GraalVM omogućava ubrzanje izvršavanja uz korišćenje manje resursa. Java aplikacije je ovim moguće prevesi na dva načina: AOT(eng \emph{Ahead Of Time}) i JIT (eng. \emph{Just In Time}). Pored Jave, neki od jezika koje GraalVM podržava su(slika~\ref{fig:jezici}): 
+GraalVM predstavlja JDK (\emph{Java Development Kit}) visokih performansi\cite{graalvm}. GraalVM omogućava ubrzanje izvršavanja uz korišćenje manje resursa. Java aplikacije je ovim moguće prevesi na dva načina: AOT(\emph{Ahead Of Time}) i JIT ( \emph{Just In Time}). Pored Jave, neki od jezika koje GraalVM podržava su(slika~\ref{fig:jezici}): 
 \begin{itemize}
 	\item JavaScript i Node.js
 	\item Python
@@ -109,18 +109,6 @@ GraalVM predstavlja JDK (eng \emph{Java Development Kit}) visokih performansi\ci
 \end{itemize}
 
 U ovom radu prolazimo kroz osnovne elemente i ciljeve ovog projekta, šta je to inovativno uvedeno i gde se sve koristi. 
-
-\subsection{Istorijski razvoj}
-\label{subsec:istorija}
-
-Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. preko šezdeset naučnih radova je izdato od strane razvojnog tima. Jedan od prvih radova koji iznosi ideju ovog projekta je \textit{One VM to rule them all} \cite{onevmtorulethemall}.
-
-Java Virtuelne mašine poput Oracle Java HotSpotVM i IBM Java VM postoje više od dve decenije. Međutim nije postojala virtuelna mašina koja bi omogućila efikasno izvršavanje kodova pisanih u različitim jezicima. Cilj ovog projekta je bio da se napravi objedinjena virtuelna mašina koja bi ovo omogućila.
-
-Prva verzija GraalVM 19.0 je objavljena u maju 2019. Trenutno najnovija verzija je GraalVM 22.3.0, objavljena u oktobru 2022. \cite{graalvmreleases}.
-
-\subsection{Jedan alat --- više jezika}
-\label{subsec:alatjezik}
 
 \begin{figure}
 	\caption{Podržani jezici.}
@@ -166,6 +154,15 @@ Dostupna su dva izdanja GraalVM-a:
 
 GraalVM je podržan od strane razvojnih okruženja i protokola za debagovanje. Neka od tih okruženja su Eclipse, NetBeans, IntelliJ IDEA i Visual Studio Code. Ova okruženja su posebno dobra jer podržavaju sve jezike koje podržava i GraalVM.\ Ovaj alat obezbeđuje ugrađen Crome DevTools Protocol, Debug Adapter Protocol (DAP) i Language Server Protocol (LSP), čime je omogućeno debagovanje JavaScript, R i Ruby kodova.
 
+\subsection{Istorijski razvoj}
+\label{subsec:istorija}
+
+Projekat GraalVM je istraživački projekat koji razvija Oracle labs. Od 2012. preko šezdeset naučnih radova je izdato od strane razvojnog tima. Jedan od prvih radova koji iznosi ideju ovog projekta je \textit{One VM to rule them all} \cite{onevmtorulethemall}.
+
+Java Virtuelne mašine poput Oracle Java HotSpotVM i IBM Java VM postoje više od dve decenije. Međutim nije postojala virtuelna mašina koja bi omogućila efikasno izvršavanje kodova pisanih u različitim jezicima. Cilj ovog projekta je bio da se napravi objedinjena virtuelna mašina koja bi ovo omogućila.
+
+Prva verzija GraalVM 19.0 je objavljena u maju 2019. Trenutno najnovija verzija je GraalVM 22.3.0, objavljena u oktobru 2022. \cite{graalvmreleases}.
+
 \section{Šta obuhvata projekat?}
 \label{sec:projekat}
 
@@ -178,7 +175,7 @@ Jedna od prednosti GraalVM je što se može koristiti umesto Java virtuelne maš
 
 Još jedna od prednosti koja se pripisuje GraalVM-u su odlične performanse. Neke demonstracije pokazuju da se Ruby program izvršava i do 30 puta brže od originalne implementacije \cite{graalvmbenchmark}. Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\% brže na GraalVM, što je i dalje obećavajući rezultat \cite{whataboutgraalvm}.
 
-Kada su testirani Java programi, rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru \cite{graalvm}. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije. U svakom slučaju, GraalVM će biti brži od klasične JVM.\ Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++. To omogućava lakše proširenje i optimizaciju od strane Java programera.
+Kada su testirani Java programi rezultati su bili manje optimistični, performanse GraalVM-a su okvirno slične Oracle-ovom HotSpot kompajleru \cite{graalvm}. Ovo samo po sebi ne predstavlja loš rezultat, ali ne predstavlja ni neki revolucionarni napredak u odnosu na sadašnje tehnologije. U svakom slučaju, GraalVM će biti brži od klasične JVM.\ Iako ne predstavlja poboljšanje u odnosu na HotSpot VM, prednost GraalVM-a je u tome što je nov kompajler nad kojim nije vršena optimizacija preko dvadeset godina, kao što je to slučaj sa HotSpot-om. Još jedna prednost u odnosu na prethodne kompajlere je to što je pisan u Javi za razliku od prethodnih kompajlera koji su pisani u jezicima C i C++. To omogućava lakše proširenje i optimizaciju od strane Java programera.
 
 \subsection{Truffle --- kompajler za kompajlere}
 \label{sub:truffle}
@@ -212,9 +209,9 @@ Mikroservisi se sada kompajliraju u izvršni fajl i time je eliminisana potreba 
 
 Postoje dva ustaljena načina za prevođenje koda napisanog u Java-i korišćenjem GraalVM-a kompajlera, to su JIT (Just-In-Time) i AOT (Ahead-of-Time) (slika~\ref{fig:runjava}).\ Od verzije 21.0 uvedena je nova komponenta, nazvana \emph{espresso}. \emph{Espresso} predstavlja implementaciju JVM specifikacije, koja je napisana u Java-i pomoću Truffle radnog okvira. Ova komponenta nije podrazumevano deo GraalVM-a ali može se lako instalirati korišćenjem \emph{GraalVM Updater tool}-a \cite{graalvm}. Na raspolaganju je i za GraalVM distribucije zasnovane na Java-i 8, kao i na Java-i 11 tako da se može koristiti kao zamena za JVM po izboru.
 
-\emph{Java on Truffle} režim izvršavanja pokreće Java kod preko bajtkod interpretera implementiranog korišćenjem Truffle-a (slika~\ref{fig:javaontruffle}). Na ovaj način Java (i drugi JVM zasnovani jezici) pokreću se na isti način kao tradicionalni interpretirani i LLVM jezici koje GraalVM podržava. Ovo omogućava potpunu interoperabilnost sa njima --- poliglot programiranje \cite{grooteman2017java, graalvm}. Iz tog razloga se mogu pozivati funkcije napisane u ovim jezicima u Java-i, kao i Java funkcije u drugim Truffle jezicima. Pri ovakvom izvršavanju podaci se nalaze u zajedničkom memorijskom prostoru.
+\emph{Java on Truffle} režim izvršavanja pokreće Java kod preko bajtkod interpretera implementiranog korišćenjem Truffle-a (slika~\ref{fig:javaontruffle}). Na ovaj način Java (i drugi JVM zasnovani jezici) pokreću se na isti način kao tradicionalni interpretirani i LLVM jezici koje GraalVM podržava. Ovo omogućava potpunu interoperabilnost sa njima --- poliglot programiranje \footnote{Poliglot programiranje je praksa pisanja koda u više jezika da bi se iskoristile dodatne mogućnosti svakog jezika. Više reči o tome će biti u delu \ref{sub:poliglot}.} \cite{grooteman2017java, graalvm}. Iz tog razloga se mogu pozivati funkcije napisane u ovim jezicima u Java-i, kao i Java funkcije u drugim Truffle jezicima. Pri ovakvom izvršavanju podaci se nalaze u zajedničkom memorijskom prostoru.
 
-Činjenica da je \emph{Java on Truffle} implementiran u Java-i (eng. \emph{self-hosting}) smatra se \emph{Svetim gralom} u razvoju JVM-a. Da bi \emph{Java on Truffle} mogla da pokrene Java kod neophodan joj je pristup JCL-u (Java Class Library), nativnim bibliotekama i metodama koje pruža JDK (Java Development Kit). \emph{Java on Truffle} ponovno koristi Java Archive datoteke i nativne biblioteke iz GraalVM distribucije \cite{grooteman2017java}. Kao posledica \emph{self-hosting}-a \emph{Java on Truffle} jeste metacirkularna VM\footnote{Metacirkularna VM može pokretati samu sebe nekoliko nivoa u dubinu, pri čemu svakim silaskom postaje nešto sporija.}. Druga prednost ovoga je da je izvorni kod razumljiv Java programerima. Ovaj nivo transparentnosti, kroz zajednicu otvorenog koda, čini \emph{Java on Truffle} projektom koji se ubrzano razvija i unapređuje.
+Činjenica da je \emph{Java on Truffle} implementiran u Java-i (eng. \emph{self-hosting}) smatra se ``Svetim gralom'' u razvoju JVM-a. Da bi \emph{Java on Truffle} mogla da pokrene Java kod neophodan joj je pristup JCL-u (Java Class Library), nativnim bibliotekama i metodama koje pruža JDK (Java Development Kit). \emph{Java on Truffle} ponovno koristi Java Archive datoteke i nativne biblioteke iz GraalVM distribucije \cite{grooteman2017java}. Kao posledica \emph{self-hosting}-a \emph{Java on Truffle} jeste metacirkularna VM\footnote{Metacirkularna VM može pokretati samu sebe nekoliko nivoa u dubinu, pri čemu svakim silaskom postaje nešto sporija.}. Druga prednost ovoga je da je izvorni kod razumljiv Java programerima. Ovaj nivo transparentnosti, kroz zajednicu otvorenog koda, čini \emph{Java on Truffle} projektom koji se ubrzano razvija i unapređuje.
 
 \emph{Java on Truffle} istovremeno je JVM i Java program, što znači da može biti pokrenuta unutar drugog Java programa. Ovo daje mogućnost razdvajanja aplikacije u komponente sa zajedničkom funkcionalnošću kako bi se proces programiranja učinio lakšim za upravljanje i podigla ponovna upotrebljivost koda. Na ovaj način može se ugraditi Java 8 kontekst u Java 11 aplikaciju i obrnuto, koristeći \emph{GraalVM Polyglot API} \cite{graalvm}. Na primer ako su na raspolaganju obe distribucije (JDK 11 i JDK 8),
 \emph{Java on Truffle} može biti pokrenuta kao Java 8 aplikacija, a potom može biti iskorišćena za pokretanje Java 11 bajtkoda i obrnuto \cite{grooteman2017java}. Ako postoji biblioteka dostupna samo za Java-u 8, sada je moguće prebaciti se na noviji JDK i, uz manje programerske napore da se uspostavi interoperabilnost, koristiti je u Java 11 aplikaciji. Takođe ovime se povećava nivo izolovanosti \emph{host} VM-a i Java programa koji se pokreće. Ovo povećava bezbednost pri izvršavanju manje pouzdanog ili nepoznatog koda \cite{graalvm}.
