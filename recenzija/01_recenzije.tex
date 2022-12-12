@@ -35,7 +35,7 @@
 	\section{Krupne primedbe i sugestije}
 	Potpoglavlje 1.1 vezano za istorijat bi trebalo da bude odvojena celina mimo samog uvoda, dok potpoglavlje 1.2 ne mora postojati samo kao potpoglavlje, nego se treba uvrstiti u okviru poglavlja 1. 
 	\odgovor{Smatramo da istorija zapravo objašnjava okolnosti u kojima je nastao projekat, što ga čini dobrim delom uvoda. Deo 1.2 je spojen sa Uvodom.}
-    Potpoglavlje 2.4 je vidno obimnije od ostalih i potrebno ga je restruktuirati i potencijalno podeliti na više odvojenih podpoglavlja, dok je potpoglavlje 3.4 isuviše šturo, potrebno ga je potkrepiti sa još nekom rečenicom i dubljim objašnjenjem ili pak, u potuponosti izostaviti potpoglavlje i njegov sadašnji sadržaj spojiti sa već postojećim poglavljima na adekvatan način. \odgovor{Poglavlje o naprednim alatima je izbačeno, dok se informacije i tabela sada nalaze u poglavlju Karakteristike.}
+    Potpoglavlje 2.4 je vidno obimnije od ostalih i potrebno ga je restruktuirati i potencijalno podeliti na više odvojenih podpoglavlja, dok je potpoglavlje 3.4 isuviše šturo, potrebno ga je potkrepiti sa još nekom rečenicom i dubljim objašnjenjem ili pak, u potuponosti izostaviti potpoglavlje i njegov sadašnji sadržaj spojiti sa već postojećim poglavljima na adekvatan način. \odgovor{Potpoglavlje 2.4. nije moguće podeliti na više potpoglavlja jer se celo odnosi na jednu zaokruženu celinu (\emph{Espresso}). Odlučili smo se i da ne dodajemo podpodnaslove unutar pomenutog potpoglavlja da ne bismo narušili simetričnost sadržaja rada. Poglavlje o naprednim alatima je izbačeno, dok se informacije i tabela sada nalaze u poglavlju Karakteristike.}
 	% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
 	
 	\section{Sitne primedbe}
@@ -50,7 +50,7 @@
 		\item Poglavlje 2.1, drugi pasus, druga rečenica: fali ''se'' kod ''da''.\\
 		\odgovor{Popravljeno.}
 		\item Poglavlje 2.1, treći pasus, prva rečenica: fali zarez nakon ''programi''.\\
-		\odgovor{Smatramo da je ispravno bez zareza}
+		\odgovor{Popravljeno.}
 		\item Poglavlje 2.2, četvrti pasus, druga rečenica: umesto ''sebe'' treba ''sebi''.\\
 		\odgovor{Popravljeno.}
 		\item Poglavlje 2.2, četvrti pasus, četvrta rečenica: umesto ''Ovim omogućavamo''	treba ''Ovim se omogućava''.\\
@@ -90,7 +90,7 @@
 		\item Da li su u radu reference korektno navedene?\\
 		Da, reference su stavljane na prava mesta u okviru rečenica i postavljene su u dovoljnoj meri; veći deo teksta je njima potkrepljen. 
 		\item Da li je struktura rada adekvatna?\\
-		Većinom da, međutim propusti su navedeni u poglavlju o krupnim primedbama i sugestijama, jer bi ovim izmenama rad bio strukturno puno bolji.
+		Većinom da, međutim propusti su navedeni u poglavlju o krupnim primedbama i sugestijama, jer bi ovim izmenama rad bio strukturno puno bolji. \odgovor{Odgovor na ovo se nalazi u odgovoru na Krupne primedbe.}
 		\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
 		Da, svi elementi su prisutni i u adekvatnom formatu.
 		\item Da li su slike i tabele funkcionalne i adekvatne?\\
@@ -134,7 +134,7 @@ predstavlja daleko više od alata za pisanje višejezičnih aplikacija).
 
 \odgovor{
 Uvod je izmenjen na sledeći način:
-GraalVM predstavlja JDK (\emph{Java Development Kit}) visokih performansi\cite{graalvm}. GraalVM omogućava ubrzanje izvršavanja uz korišćenje manje resursa. Java aplikacije je ovim moguće prevesi na dva načina: AOT(\emph{Ahead Of Time}) i JIT (\emph{Just In Time}).
+GraalVM predstavlja JDK (\emph{Java Development Kit}) visokih performansi \cite{graalvmintroduction}. GraalVM omogućava ubrzanje izvršavanja uz korišćenje manje resursa. Nudi prevođenje Java aplikacija na dva načina: AOT (\emph{Ahead Of Time}) i JIT (\emph{Just In Time}).
 }
 
 U sekciji 2, navedeno je sledeće: \textit{Detaljnija testiranja su ipak pokazala da se u proseku Ruby kod izvšava oko 30\% brže na GraalVM}. 
@@ -145,14 +145,14 @@ potvrdila tačnost navedene tvrdnje.
 
 Rad je mogao biti nešto drugačije struktuiran, gde bi se u sekciji 2: (\textit{Šta obuhvata projekat?}) svakako trebali navesti GraalVM JIT 
 kompajler i Native image tehnologija(navedena u sekciji 3, koja opisuje karakteristike projekta). 
-\odgovor{Sekcija je prebačena.}
+\odgovor{Sekcija je prebačena. Sve što se odnosi na Native Image sada je struktuirano na bolji način i nalazi se u potpoglavlju 2.3. U pomenutom poglavlju dodat je još jedan (treći) pasus.}
 
 Takođe, možda je trebalo prebaciti težište rada sa mogućnost pisanja višejezičnih aplikacija, na mesta na kojima se projekat može primeniti(i 
 zašto se na specifičnim mestima primene GraalVM-a ostvaruju bolji rezultati nego kada se koristi JVM). Svakako jedna od ključnih prednosti 
 GraalVM-a predstavlja unapređenje performansi Java jezika u određenim situacijama (najočigledniji primer je korišćenje GraalVM-a za cloud 
 aplikacije zbog niskog vremena zagrevanja (eng.~{\em warm-up time})). Ova stavka pomenuta je, ali procentualno daleko manje u odnosu na 
 višejezičnost.
-\odgovor{Smatramo da ovaj rad navodi osnovne elemente, karakteristike i ciljeve GraalVM-a. Višejezničnost je nešto specifično za GraalVM zbog čega je u radu tome posvećeno više pažnje. U delu \emph{3.1 Visoke performanse} je naglašeno koliko je GraalVM performantniji u odnosu na neke druge JVM-ove.}
+\odgovor{Smatramo da ovaj rad navodi osnovne elemente, karakteristike i ciljeve GraalVM-a. Višejezničnost je nešto specifično za GraalVM zbog čega je u radu tome posvećeno više pažnje. Smatramo da u radu postoji osvrt na performanse i primene GraalVM-a. U delu \emph{3.1 Visoke performanse} je benčmark testiranjem pokazano koliko je GraalVM performantniji u odnosu na neke druge JVM-ove.}
 
 \section{Sitne primedbe}
 % Напишете своја запажања на тему штампарских-стилских-језичких грешки
@@ -166,11 +166,11 @@ velika slova. S druge strane, kada se govori o izvršivoj datoteci, ime se navod
 Potkrepljenje činjenice: \href{https://www.graalvm.org/22.0/reference-manual/native-image/}{https://www.graalvm.org/22.0/reference-manual/
 native-image/} \odgovor{Promakla nam je ta informacije, sada je rečenica ispravljena. Takođe, ispravljena su i sva ostala mesta gde se nalazi \emph{native image} koji se odnosi na izvršivu datateku.}
 
-\indent Reference koje ukazuju na veb stranice, bi trebale da budu nešto konkretnije. Većina navedenih referenci ukazuje samo na početnu stranicu, na kojoj se u većini slučajeva ne nalaze podaci koji su referencirani.  \odgovor{Dodate su reference koje vode na određene stranice sajta GraalVM.org, to su stranice Introduction, Java on Truffle.}
+\indent Reference koje ukazuju na veb stranice, bi trebale da budu nešto konkretnije. Većina navedenih referenci ukazuje samo na početnu stranicu, na kojoj se u većini slučajeva ne nalaze podaci koji su referencirani.  \odgovor{Dodate su reference koje vode na određene stranice sajta GraalVM.org, to su stranice Introduction, Native Image, Java on Truffle.}
 
-\indent Rad sadrži dosta termina koji su prevedeni bez adekvatnog stranog termina. \odgovor{Popravljeno.}
+\indent Rad sadrži dosta termina koji su prevedeni bez adekvatnog stranog termina. \odgovor{Popravljeno. Na svim mestima gde je prepoznato da je potrebno dodat je odgovarajući engleski termin.}
 
-\indent Na par mesta postoje sitne slovne greške(npr. JKD umesto JDK). \odgovor{Ispravljeno.}
+\indent Na par mesta postoje sitne slovne greške(npr. JKD umesto JDK). \odgovor{Popravljeno.}
 
 \section{Provera sadržajnosti i forme seminarskog rada}
 % Oдговорите на следећа питања --- уз сваки одговор дати и образложење
@@ -184,17 +184,17 @@ se GraalVM pre koristio nego tradicionalni JVM.
 
 \item Da li je nešto važno propušteno?\\
 Sve teme su pokrivene, uz primedbu da je o Native Image tehnologiji posvećen samo jedan pasus, a upravo ova tehnologija predstavlja jako bitan 
-deo projekta GraalVM. \odgovor{Popravljeno.}
+deo projekta GraalVM. \odgovor{Popravljeno. Native Image-u sada je posvećeno potpoglavlje 2.3.}
 
 \item Da li ima suštinskih grešaka i propusta?\\
-Osim uvodne rečenice, u kojoj je sam GraalVM pogrešno definisan, ostatak projekta nema suštinskih grešaka. \odgovor{Popravljeno.}
+Osim uvodne rečenice, u kojoj je sam GraalVM pogrešno definisan, ostatak projekta nema suštinskih grešaka. \odgovor{Popravljeno. Uvodna rečenica je izmenjena na način kako je navedeno u odgovoru na Krupne primedbe.}
 
 \item Da li je naslov rada dobro izabran?\\
 Navedeni naslov odgovara temi koja je opisana u projektu.
 
 \item Da li sažetak sadrži prave podatke o radu?\\
 Kao i uvodna rečenica, sažetak stavlja akcenat na višejezičnost, te je poželjno modifikovati ga, tako da se akcenat pomeri bliže definiciji da 
-GraalVM predstavlja JDK visokih performansi. \odgovor{Odgovor na ovo se nalazi u odgovoru na Krupne primedbe.}
+GraalVM predstavlja JDK visokih performansi. \odgovor{Odgovor na ovo se nalazi u odgovoru na Krupne primedbe. U sažetku je pored višejezičnosti pomenuta i efikasnost i široka primena GraalVM-a.}
 
 \item Da li je rad lak-težak za čitanje?\\
 Obzirom na kompleksnost projekta o kojem rad govori, rad sadrži dosta stručne terminologije, što ga čini težim za čitanje(što nije primedba 
@@ -206,14 +206,14 @@ u obliku u kojem se koriste u ovom projektu), te je za njegovo razumevanje potre
 
 \item Da li je u radu navedena odgovarajuća literatura?\\
 Literatura je odgovarajuća uz već navedenu primedbu da bi reference ka veb lokacijama mogle biti konkretnije(ka konkretnoj a ne ka početnoj 
-strani). \odgovor{Popravjeno.}
+strani). \odgovor{Popravljeno, Odgovor se nalazi u odgovoru na Sitne primedbe.}
 
 \item Da li su u radu reference korektno navedene?\\
 Pomenuto u prethodnoj tačci.
 
 \item Da li je struktura rada adekvatna?\\
 Određene delove bi trebalo zameniti, kako je to već navedeno. Primer: Native Image prebaciti u sekciju 2(Šta projekat obuhvata), dok bi se 
-podaci o performansama(konkretno za Ruby jezik) mogle izmestiti u sekciju 3(Karakteristike). \odgovor{Popravljeno.}
+podaci o performansama(konkretno za Ruby jezik) mogle izmestiti u sekciju 3(Karakteristike). \odgovor{Native Image je prebačen u sekciju 2 (kao potpoglavlje 2.3). Odlučili smo da u sekciji budu opisani konkretni rezultati benčmark testiranja. S obzirom da su performanse za Ruby jezik samo pomenute ostavljene su potpoglavlju 2.1.}
 
 \item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
 Da. Rad sadrži sve tražene elemente i adekvatan broj strana. 
