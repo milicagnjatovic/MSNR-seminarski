@@ -66,7 +66,7 @@
 		\begin{flushleft}
 			\begin{itemize}
 				\item Eclipse, NetBeans, IntelliJ IDEA i Visual Studio Code
-				\item Wndows, Linux, MacOS
+				\item Windows, Linux, MacOS
 			\end{itemize}
 		\end{flushleft}
 		
@@ -90,8 +90,54 @@
 	\end{frame}	
 
 	\begin{frame}
-		\frametitle{Espresso}
+		\frametitle{Espresso - Java on Truffle}
+
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=0.5\linewidth]{imgs/java_on_truffle.png}	
+			\end{center} 
+		\end{figure}
+
+		\center	
+		\textit{Java on Truffle u GraalVM ekosistemu}
+
+
+		\begin{flushleft}
+			\begin{itemize}
+				\item Dostupna od verzije 21.0
+				\item Implementacija JVM specifikacije pomoću Truffle-a
+				\item Interoperabilnost sa interpretiranim i LLVM jezicima
+				\item \emph{Self-hosting}, metacirkularna VM
+				\item Izvorni kod razumljiv Java programerima
+				\item Istovremeno JVM i Java program
+			\end{itemize}
+		\end{flushleft}
+
 	\end{frame}	
+
+	\begin{frame}
+		\frametitle{Espresso - Java on Truffle}
+
+		\begin{flushleft}
+			\begin{itemize}
+				\item Moguće ugraditi Java 8 u Java 11 aplikaciju
+				\item Povećana izolovanost \emph{host} VM-a i Java programa
+				\item Napredni \emph{hot swap} prilikom debagovanja
+				\item Eskperimentalna tehnologija
+			\end{itemize}
+		\end{flushleft}
+
+
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=0.5\linewidth]{imgs/hotswap.png}	
+			\end{center} 
+		\end{figure}
+
+		\center	
+		\textit{Hot Swap u IntelliJ IDEA debageru}
+
+	\end{frame}
 	
 		
 	\section{Karakteristike}
