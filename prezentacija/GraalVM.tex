@@ -7,7 +7,26 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
 
+\pgfplotsset{%
+    % #1: index in the group(0,1,2,...)
+    % #2: number of plots of that group
+    bar group size/.style 2 args={%
+        /pgf/bar shift={%
+                % total width = n*w + (n-1)*skip
+                % -> subtract half for centering
+                -0.5*(#2*\pgfplotbarwidth + (#2-1)*\pgfkeysvalueof{/pgfplots/bar group skip})  +
+                % the '0.5*w' is for centering
+                (.5+#1)*\pgfplotbarwidth + #1*\pgfkeysvalueof{/pgfplots/bar group skip}},%
+    },
+    bar group skip/.initial=2pt,
+    plot 0/.style={blue,fill=blue!30!white,mark=none},%
+    plot 1/.style={red,fill=red!30!white,mark=none},%
+    plot 2/.style={brown!60!black,fill=brown!30!white,mark=none},%
+    plot 3/.style={gray,fill=gray,mark=none},%
+}
 
 \title{GraalVM}
 \subtitle{predmet: Metodologija stručnog i u naučnog rada}
@@ -167,14 +186,73 @@
 	
 	\begin{frame}
 		\frametitle{Visoke performanse}
-	\end{frame}	
 
-	\begin{frame}
-		\frametitle{Poliglot programiranje}
+        \begin{figure}[scale=0.5]
+            \begin{center}
+                \begin{tikzpicture}[scale=0.7]
+                    \begin{axis}[
+                            width=0.85\textwidth,
+                            x tick label style={/pgf/number format/1000 sep=},
+                            ylabel=Prosečno vreme u milisekundama $(ms)$,
+                            enlargelimits=0.15,
+                            legend style={at={(0.5,-0.15)},
+                            anchor=north,legend columns=-1},
+                            ybar,
+                            bar width=7pt,
+                            xtick={0,1,2,3,4,5},
+                            xticklabels={h2, lusearch, xalan, pmd, sunflow, jython},
+                        ]
+                        \addplot[plot 0,bar group size={0}{4}]
+                        coordinates {(0,4494.95) (1,2683.40) (2,863.32) (3,138.23) (4,5062.05) (5,6652.86)};
+                        \addplot[plot 1,bar group size={1}{4}]
+                        coordinates {(0,5327.10) (1,2757.10) (2,277.41) (3,194.61) (4,5626.25) (5,7038.34)};
+                        \addplot[plot 2,bar group size={2}{4}]
+                        coordinates {(0,10821.85) (1,2874.50) (2,870.72) (3,201.95) (4,5417.25) (5,6433.60)};
+                        \addplot[plot 3,bar group size={3}{4}]
+                        coordinates {(0,9550.05) (1,2886.15) (2,232.51) (3,276.76) (4,6151.25) (5,6672.10)};
+                        \legend{GraalVM EE, GraalVM CE, JDK10, JDK11}
+                    \end{axis}
+                \end{tikzpicture}
+            \end{center}
+            \caption{\emph{DaCapo} benčmark na \emph{GraalVM EE, GraalVM CE, JDK10, JDK11}.}
+            \label{fig:dacapo}
+        \end{figure}
+
+
+    \end{frame}	
+
+    \begin{frame}
+        \frametitle{Poliglot programiranje}
+        \begin{itemize}
+            \item Svi jezici imaju prednosti u nekom domenu problema
+            \item Koristimo odgovarajući jezik za rešavanje određenog problema
+            \item Integrišemo više programskih jezika u jedan projekat
+            \item GraalVM rešava problem integrisanja više programskih jezika
+            \item TruffleVM
+        \end{itemize}
 	\end{frame}	
 
 	\begin{frame}
 		\frametitle{Napredni alati}
+        \begin{table}
+            \centering
+            \begin{tabular}{|l|l|}
+                \hline
+                VS Code Extensions & Radno okruženje unutar VS Code-a\\
+                \hline
+                GraalVM Dashboard & Vizuelna reprezentacija delova projekta\\
+                \hline
+                Chrome Debugger & Debager za JS, Ruby, R i Python\\
+                \hline
+                VisualVM & Profajler, monitor, aktivne niti\ldots\\
+                \hline
+                GraalVM Insight & Praćenje programa u izvršavanju\\
+                \hline
+                Ideal Graph Visualizer & Graf faza kompilacija\\
+                \hline
+            \end{tabular}
+            \caption{Napredni alati unutar Projekta \emph{GraalVM}.}\label{alati}
+        \end{table}
 	\end{frame}	
 
 	\section{Zaključak}
